@@ -29,6 +29,7 @@
 
 * [PackRat](https://rstudio.github.io/packrat/) - a dependency management system for R
 * [renv](https://rstudio.github.io/renv/articles/renv.html) - a new effort to bring project-local R dependency management to your projects. The goal is for renv to be a robust, stable replacement for the Packrat package, with fewer surprises and better default behaviors.
+  * [Renv package explained](https://kevinushey-2020-rstudio-conf.netlify.app/slides.html) by Kevin Ushey   
 * [Requirements.txt-like file for R (Stack Overflow)](https://stackoverflow.com/questions/38928326/is-there-something-like-requirements-txt-for-r) - various suggestions for creating a dependency file for your R project.
 
 ## Data Visualisation
@@ -73,11 +74,19 @@
 * [Exploratory.io](https://exploratory.io/) -  Exploratory Desktop provides a Simple and Modern UI experience to access various Data Science functionalities including Data Wrangling, Visualization, Statistics, Machine Learning, Reporting, and Dashboard. It is built on R so you can easily Extend it with thousands of open source packages to meet your needs.
 * [JASP](https://jasp-stats.org/) - GUI based in R that allows you to conduct statistical analyses in seconds, without programming. Offers both frequentist and Bayesian analysis methods.
 * [Jamovi](https://www.jamovi.org/) - free and open statistical software built on R. Would you like the R code for your analyses? Jamovi can provide that too.
+* [JAMOVI / JASP / R / Rmarkdown collaborative manual](https://docs.google.com/document/d/1A9BbOCsrg1ikLaBltKhXVKj-eetlrBqR-1u-2V99I2c/edit#) by Gilad Feldman
 
 ## R + Python
 
 * [Reticulate](https://rstudio.github.io/reticulate/) - R interface to Python
 * [Python and R for the Modern Data Scientist (book)](https://www.oreilly.com/library/view/python-and-r/9781492093398/) - This book guides data scientists from the Python and R communities along the path to becoming bilingual. By recognizing the strengths of both languages, you'll discover new ways to accomplish data science tasks and expand your skill set.
+
+## R + GitHub
+* [Happy Git and GitHub for the useR](https://happygitwithr.com/)
+  * See [here for a shorter version](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/)
+* [WORCS, Workflow for Open Reproducible Code in Science](https://www.youtube.com/watch?v=uzjpN_yFeUU) (+ [longer presentation involving the broader context that WORCS fit in](https://www.youtube.com/watch?v=uKd6HoK_iS0))
+* [GEOG 712 Reproducible Research Workflow](https://github.com/paezha/Reproducible-Research-Workflow) with GitHub and R
+
 
 ## R package repositories
 * [ROpenSci](https://ropensci.org/) - help develop R packages for the sciences via community driven learning, review and maintenance of contributed software in the R ecosystem.
@@ -87,6 +96,15 @@
 * [PsyTeachR](https://psyteachr.github.io/) - curriculum that emphasizes essential ‘data science’ graduate skills that have been overlooked in traditional approaches to teaching, including programming skills, data visualisation, data wrangling and reproducible reports.
 * [R for Reproducible Research](https://annakrystalli.me/rrresearch/) - This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential. 
 * [Reproducible Research in R](https://r-cubed.rostools.org/) - An introductory workshop on modern data analyses and workflows.
+* [Reproducible Analyses in R](https://n8cir.org.uk/events/event-resource/analyses-r/) (beginner)
+* [Reproducible Research with R](https://ropensci.org/commcalls/2019-07-30/) (research compendia and rrtools, Holepunch and Binder, ReproHack)
+* [Reproducible research with workflowr](https://www.youtube.com/watch?v=3yX73UBN2SU)
+* [Reproducible Science with R and Rstudio](https://github.com/oliviergimenez/reproducible-science) by Olivier Gimenez
+* [Improve your workflow for reproducible science](https://www.youtube.com/watch?v=JA-vLsN-sic&feature=youtu.be) (intermediate)
+* https://workflowr.io/, a central website for discovering and sharing reproducible research projects created with the #rstats package
+* [Tidy data](http://dx.doi.org/10.18637/jss.v059.i10), paper by Hadley Wickham explaining a central concept of the tidyverse
+* [Filling your bag of workflow tricks](https://mpaulacaldas.github.io/r-ladies-workflow/#1) by María Paula Cadras
+
 
 ## R beginner materials
 
@@ -95,14 +113,12 @@
 * [25 days of chRistmas](https://kiirstio.wixsite.com/kowen/post/the-25-days-of-christmas-an-r-advent-calendar) by Kiirsti Owen, with [videos by Jason Winget](https://www.youtube.com/watch?v=ms7u9jvkjNI&list=PLXjgHAp5I5UhV7nw1eY61_Uil68KhmBKe) 
 * [Intro to R](https://github.com/andrw-jns/intro_r) by Andrew Jones and Ozayr Mohammed 
 * [R for beginners](https://www.rensvandeschoot.com/tutorials/r-for-beginners/) by Ihnwhi Heo, Duco Veen, and Rens van de Schoot
-* [R-cubed](https://r-cubed.rostools.org/), An introductory workshop on modern data analyses and workflows
 * [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) by Julie Lowndes & Allison Horst
 
 ## R & Statistics
 * [R videos by Kelly Bodwin](https://www.youtube.com/user/SuperKrazy2000)  
 * [Learning Statistics with R](https://bookdown.org/ekothe/navarro26/preface.html) by Danielle Navarro
 * Statistical analyses using R with Amelia McNamara using [base R](https://www.youtube.com/playlist?list=PLik6fAQnSI90bHK9fapPS-eZCUhgROh6S) and the [tidyverse](https://www.youtube.com/playlist?list=PLik6fAQnSI93eBVuAONFBCVdOd7VFhKQX)
-* [JAMOVI / JASP / R / Rmarkdown collaborative manual](https://docs.google.com/document/d/1A9BbOCsrg1ikLaBltKhXVKj-eetlrBqR-1u-2V99I2c/edit#) by Gilad Feldman
 * [COMP/STAT 112](https://ds112-lendway.netlify.app/) by Lisa Lendway (Intermediate)
 
 ## Spatial
@@ -111,6 +127,7 @@
 * [Introduction to GIS in R](https://annakrystalli.me/intro-r-gis/index.html) by Anna Krystalli
 
 ## Other
+* [Structuring R projects](https://chrisvoncsefalvay.com/2018/08/09/structuring-r-projects/)
 * [{ggxmean}](https://github.com/EvaMaeRey/ggxmean) lets you put a [vertical line at the mean of x](https://evamaerey.github.io/rendered_templates/templates/ggxmean_template#1)
 * [automated R course](https://github.com/rstudio/rstudio-conf/tree/master/2021/minecetinkayarundel)
 * Package to help you share code to ask questions: [reprex](https://github.com/tidyverse/reprex)
