@@ -17,6 +17,16 @@
 * [Rmarkdown examples/blogs/tutorials](https://www.one-tab.com/page/d00HO6mxTTuqo2o7aGCffQ) 
 * [RMarkdown Driven Development](https://rstudio.com/resources/rstudioconf-2020/rmarkdown-driven-development/) (Into to RMarkdown, projects and packages) 
 
+## R Markdown presentations
+* Packages: 
+  * [xaringan](https://github.com/yihui/xaringan) (see [slides](https://rmarkdown-shilaan.netlify.app/#1) by Shilaan Alzahawi) 
+    * [xaringanExtra](https://github.com/gadenbuie/xaringanExtra/) (see [slides](https://slides.garrickadenbuie.com/extra-special-xaringan/#1) and [presentation](https://www.youtube.com/watch?v=RPFh3y9UAX4&list=PL4IzsxWztPdnCC_kMCYKrd_t6cViMhBrD&index=2) by Garrick Aden-Buie et al.)
+  * [revealjs](https://github.com/rstudio/revealjs) (see [slides](https://github.com/bebatut-slides/2019) by Bérénice Batut) 
+  * [remark](https://github.com/gnab/remark)
+  * [slidev](https://github.com/slidevjs/slidev)
+* Add alt-text to code chunks (using option fig.alt =) (see [slides](https://encuesta-user2021-en.netlify.app/#6) by Virginia A. García Alonso et al. for great examples of alt-text using xarigan)
+* Add emojis using the [emo package](https://github.com/hadley/emo) (use ji_name or the [emojilib](https://unpkg.com/emojilib@3.0.4/dist/emoji-en-US.json) for an overview of available emojis)
+* [Deploying xaringan Slides with GitHub Pages](https://rviews.rstudio.com/2021/11/18/deploying-xaringan-slides-a-ten-step-github-pages-workflow/)
 
 ## Building Websites in R
 
