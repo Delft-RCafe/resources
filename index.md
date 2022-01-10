@@ -49,6 +49,7 @@
 * [Data Visualization, A practical introduction](https://socviz.co/) by Kieran Healy
 * [Data visualisation in R](http://satrdayjoburg.djnavarro.net/) by Danielle Navarro (intermediate)
 * [What They Forgot to Teach You About R](https://rstats.wtf/index.html) by Jennifer Bryan and Jim Hester
+* [Tidy Data Tutor](https://tidydatatutor.com/) helps you visualize data analysis pipelines
 
 
 ### Ggplot2
