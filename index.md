@@ -16,6 +16,7 @@
 * [R Markdown](https://slides.djnavarro.net/starting-rmarkdown/#1) by Danielle Navarro (beginner)
 * [Rmarkdown examples/blogs/tutorials](https://www.one-tab.com/page/d00HO6mxTTuqo2o7aGCffQ) 
 * [RMarkdown Driven Development](https://rstudio.com/resources/rstudioconf-2020/rmarkdown-driven-development/) (Into to RMarkdown, projects and packages) 
+* [Knitr with R Markdown](https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html)
 
 ## R Markdown presentations
 * Packages: 
