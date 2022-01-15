@@ -128,6 +128,7 @@
 * [Intro to R](https://github.com/andrw-jns/intro_r) by Andrew Jones and Ozayr Mohammed 
 * [R for beginners](https://www.rensvandeschoot.com/tutorials/r-for-beginners/) by Ihnwhi Heo, Duco Veen, and Rens van de Schoot
 * [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) by Julie Lowndes & Allison Horst
+* [From spreadsheets to R workshop](https://www.youtube.com/watch?v=N445pQaidu8&list=PLpX1jXuNTXGqmDM8Tra_JFoOPLRHj615b&index=8) by Yanina Bellini Saibene and Pao Corrales
 
 ## R & Statistics
 * [R videos by Kelly Bodwin](https://www.youtube.com/user/SuperKrazy2000)  
