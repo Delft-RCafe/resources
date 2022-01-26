@@ -140,6 +140,7 @@
 * Drawing beautiful maps programmatically with R, sf and ggplot2 — [Part 1: Basics](https://r-spatial.org/r/2018/10/25/ggplot2-sf.html)
 * [7 Draw maps](https://socviz.co/maps.html#maps)
 * [Introduction to GIS in R](https://annakrystalli.me/intro-r-gis/index.html) by Anna Krystalli
+* [Mapping Crime Data with sf](https://www.youtube.com/watch?v=FmW5r6ewt4Y)
 
 ## Other
 * [Structuring R projects](https://chrisvoncsefalvay.com/2018/08/09/structuring-r-projects/)
