@@ -62,6 +62,7 @@
 * [ggplot2 scales](https://ggplot2tor.com/scales/)
 * [Multiple ggplot2 plots](https://gotellilab.github.io/GotelliLabMeetingHacks/NickGotelli/ggplotPatchwork.html)
 * [Nordmann et al. 2021 ggplot2 tutorial](https://doi.org/10.31234/osf.io/4huvw)
+* [{ggplot2} Wizardry](https://www.youtube.com/watch?v=5KHvEXYtnOo&list=PLd6eTXMmV3X-4-pHkZSJwHRACzSSyeT9T&index=8) by Cédric Sherer
 
 ### Colours
 * [Color boxes](https://www.garrickadenbuie.com/blog/little-inline-color-boxes/)
