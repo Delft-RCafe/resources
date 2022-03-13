@@ -132,6 +132,7 @@
 * [From spreadsheets to R workshop](https://www.youtube.com/watch?v=N445pQaidu8&list=PLpX1jXuNTXGqmDM8Tra_JFoOPLRHj615b&index=8) by Yanina Bellini Saibene and Pao Corrales
 * [Reproducible Analyses in R](https://www.youtube.com/watch?v=Ips0ximfgiA&list=PLqjc7z7VX2L7jBtya1S-Qa8-kCsCqMpuU&index=2) by Emma Rand
 * [GardenR](https://github.com/llendway/gardenR) by Lisa Lendway
+* [R for beginners](https://r4b-vu.netlify.app/?#1) by Ajay Kumar Koli
 
 ## R & Statistics
 * [R videos by Kelly Bodwin](https://www.youtube.com/user/SuperKrazy2000)  
