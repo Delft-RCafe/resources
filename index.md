@@ -17,6 +17,7 @@
 * [Rmarkdown examples/blogs/tutorials](https://www.one-tab.com/page/d00HO6mxTTuqo2o7aGCffQ) 
 * [RMarkdown Driven Development](https://rstudio.com/resources/rstudioconf-2020/rmarkdown-driven-development/) (Into to RMarkdown, projects and packages) 
 * [Knitr with R Markdown](https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html)
+* [RMarkdown: reproducible reporting](1https://jthomasmock.github.io/rmd-nhs/#1) by Tom Mock
 
 ## R Markdown presentations
 * Packages: 
