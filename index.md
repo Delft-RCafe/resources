@@ -102,6 +102,7 @@
   * See [here for a shorter version](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/)
 * [WORCS, Workflow for Open Reproducible Code in Science](https://www.youtube.com/watch?v=uzjpN_yFeUU) (+ [longer presentation involving the broader context that WORCS fit in](https://www.youtube.com/watch?v=uKd6HoK_iS0))
 * [GEOG 712 Reproducible Research Workflow](https://github.com/paezha/Reproducible-Research-Workflow) with GitHub and R
+* [Advanced Dashboarding in R](https://www.youtube.com/watch?v=Opa_Nf88mCU) by [Daniel Baller](https://github.com/danielpballer)
 
 
 ## R package repositories
