@@ -111,7 +111,7 @@
 * [ROpenSci](https://ropensci.org/) - help develop R packages for the sciences via community driven learning, review and maintenance of contributed software in the R ecosystem.
 
 ## R for Reproducible Research
-
+* [R Workflow](http://hbiostat.org/rflow/) by Frank E Harrell Jr
 * [PsyTeachR](https://psyteachr.github.io/) - curriculum that emphasizes essential ‘data science’ graduate skills that have been overlooked in traditional approaches to teaching, including programming skills, data visualisation, data wrangling and reproducible reports.
 * [R for Reproducible Research](https://annakrystalli.me/rrresearch/) - This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential. 
 * [Reproducible Research in R](https://r-cubed.rostools.org/) - An introductory workshop on modern data analyses and workflows.
