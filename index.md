@@ -3,6 +3,7 @@
 * [RStudio4edu](https://rstudio4edu.github.io/rstudio4edu-book/)
 * [Advanced R](https://adv-r.hadley.nz/index.html) by Hadley Wickham
 * [R ladies Tunis YouTube channel](https://www.youtube.com/channel/UCfoktGmvJ6rnME7mSP_Ww2g/videos)
+* [Advanced Data Science in R](https://advanced-ds-in-r.netlify.app/) and [Data Science skills using R](https://ds112-lendway.netlify.app/) by Lisa Lendway
 
 ## Building Apps in R
 
@@ -137,6 +138,7 @@
 * [Reproducible Analyses in R](https://www.youtube.com/watch?v=Ips0ximfgiA&list=PLqjc7z7VX2L7jBtya1S-Qa8-kCsCqMpuU&index=2) by Emma Rand
 * [GardenR](https://github.com/llendway/gardenR) by Lisa Lendway
 * [R for beginners](https://r4b-vu.netlify.app/?#1) by Ajay Kumar Koli
+* [introverse](https://sjspielman.github.io/introverse/) package and [Introduction to R and RStudio](https://htmlpreview.github.io/?https://github.com/sjspielman/datascience_for_biologists/blob/master/docs/tutorials/introduction_to_R.html) by Stephanie Spielman
 
 ## R & Statistics
 * [R videos by Kelly Bodwin](https://www.youtube.com/user/SuperKrazy2000)  
@@ -149,6 +151,10 @@
 * [7 Draw maps](https://socviz.co/maps.html#maps)
 * [Introduction to GIS in R](https://annakrystalli.me/intro-r-gis/index.html) by Anna Krystalli
 * [Mapping Crime Data with sf](https://www.youtube.com/watch?v=FmW5r6ewt4Y)
+
+## Data Cleaning
+* [Data Cleaning with R](https://luisdva.github.io/rstats/data-cleaning-course/) by Luis D. Verde Arregoitia
+
 
 ## Other
 * [Structuring R projects](https://chrisvoncsefalvay.com/2018/08/09/structuring-r-projects/)
