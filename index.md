@@ -155,6 +155,10 @@
 ## Data Cleaning
 * [Data Cleaning with R](https://luisdva.github.io/rstats/data-cleaning-course/) by Luis D. Verde Arregoitia
 
+## R Package development
+* [R package development](http://archaeoinformatics.net/r-package-development/) by Sophie Schmidt
+* [R Packages book](https://r-pkgs.org/)
+* [R packaging Carpentry Lesson (beta)](https://carpentries-incubator.github.io/lesson-R-packaging/)
 
 ## Other
 * [Structuring R projects](https://chrisvoncsefalvay.com/2018/08/09/structuring-r-projects/)
@@ -164,4 +168,3 @@
 * [Text mining with tidy data principles](https://juliasilge.shinyapps.io/learntidytext/) by Julia Silge
 * [A Zotero Workflow for R](https://www.anthonyschmidt.co/post/2021-10-25-a-zotero-workflow-for-r/)
 * [Quantitative Methods in R](https://uoftcoders.github.io/rcourse/) for Biology
-* [R package development](http://archaeoinformatics.net/r-package-development/) by Sophie Schmidt
