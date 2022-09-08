@@ -168,3 +168,4 @@
 * [Text mining with tidy data principles](https://juliasilge.shinyapps.io/learntidytext/) by Julia Silge
 * [A Zotero Workflow for R](https://www.anthonyschmidt.co/post/2021-10-25-a-zotero-workflow-for-r/)
 * [Quantitative Methods in R](https://uoftcoders.github.io/rcourse/) for Biology
+* [Configuring Github and RStudio](https://happygitwithr.com/index.html)
