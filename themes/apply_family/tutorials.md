@@ -1,0 +1,3 @@
+- [Guru99](https://www.guru99.com/r-apply-sapply-tapply.html)
+- [Rbloggers](https://www.r-bloggers.com/2022/03/complete-tutorial-on-using-apply-functions-in-r/)
+- [DataCamp](https://www.datacamp.com/tutorial/r-tutorial-apply-family)
