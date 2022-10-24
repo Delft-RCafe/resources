@@ -1,0 +1,130 @@
+---
+title: "Stock analyses using the dygraphs library"
+author: "Ashley Cryan"
+date: "2022-10-24"
+output: html_document
+---
+
+*This document uses material from: https://www.geeksforgeeks.org/how-to-use-interactive-time-series-graph-using-dygraphs-in-r/, https://www.datacamp.com/cheat-sheet/xts-cheat-sheet-time-series-in-r, https://rpubs.com/odenipinedo/manipulating-time-series-data-with-xts-and-zoo-in-R*
+
+## What is xts?
+
+Even though the data.frame object is one of the core objects to hold data in R, you'll find that it's not really efficient when you're working with time series data. You'll find yourself wanting a more flexible time series class in R that offers a variety of methods to manipulate your data.
+
+xts  or the Extensible Time Series is one of such packages that offers such a time series object. It's a powerful R package that provides an extensible time series class that lets you manipulate your data as a function of time. 
+
+We'll use a package called `quantmod` to get stock data, which automatically loads the library `xts` and imports data as xts objects. You can also convert a data frame to an xts object using the function `xts(x = data, order.by = dates)`. `data` must be a vector or matrix. `order.by` is a vector which must be the same length or number of rows as `data`, be a proper time or date object (very important!), and be in increasing order.
+
+## Import packages and download data
+
+The `dygraphs` package is used to create interactive graphs. The data come from near-real time stock prices available from from the `quantmod` package which is used to specify, build, trade, and analyse quantitative financial trading strategies. You can call any company's stock based on its four-letter NYSE code.
+
+```{r download data, message=FALSE}
+
+#import libraries
+library(dygraphs)
+library(quantmod) 
+
+symbols <- stockSymbols() # Fetch all Symbols & store only the tickers to retrieve the data
+symbols <- symbols[,1:2] # store an index of company name with NASDAQ symbol
+
+#download data for Tesla
+getSymbols("TSLA")
+
+#view top 5 rows of Tesla data
+head(TSLA, n=5)
+
+# Store OHLC data (Open High Low Close) as a new df
+price <- OHLC(TSLA)
+head(price, n=5)
+```
+
+## Series Color Graph
+
+Four values OHLC represented as different colors, specify colors in dyOptions. RColorBrewer used to create nice color palettes. You can zoom by clicking and dragging; unzoom by double-clicking.
+
+```{r Series Color Graph}
+
+dygraph(price, main = "TSLA Stock price analysis") %>% 
+  dyOptions(colors = RColorBrewer::brewer.pal(4, "Dark2"))
+
+```
+
+## Vertical Shading
+
+Highlight date range on graph to make it easier to visualize. Here we will highlight the date range between 1 February 2020 and 1 March 2021 to show the stock behavior from right before the pandemic to 1 year after it officially hit New York City.
+
+```{r Vertical shading}
+
+dygraph(price, main = "TSLA Stock price analysis") %>%
+  dyShading(from = "2020-2-1",
+            to = "2021-3-1",
+            color = "#FFE6E6")
+
+```
+
+# Add a range selector
+
+Add a range selector at the bottom of the dygraph for an easy interface for panning and zooming. This is done using the `dyRangeSelector()` function.
+
+```{r range selector}
+
+dygraph(TSLA,
+        main = "Tesla Stock Price Analysis") %>% 
+  dyRangeSelector()
+
+```
+
+## Horizontal shading
+Horizontal shading can be useful to show an expected range, or a range dictated by statistics (e.g., mean, standard deviation). Here we will show a gray bar that represents the mean and s.d. values for RET, the daily return for individual stocks without cash dividend.
+
+```{r ret stats}
+ret = ROC(TSLA[, 4])
+mn = mean(ret, na.rm = TRUE) #mean
+std = sd(ret, na.rm = TRUE) #standard deviation
+```
+
+```{r Horizontal shading}
+
+dygraph(ret, main = "TSLA Share Price") %>%
+  dySeries("TSLA.Close", label = "TSLA") %>%
+  dyShading(from = mn - std, to = mn + std, axis = "y")
+
+```
+
+## Candlestick graph
+
+Predict price movement based on past data.
+
+```{r candlestick}
+
+TSLA_tail <- tail(TSLA, n=30)
+
+graph <- dygraph(OHLC(TSLA_tail)) # save dygraph as object
+
+dyCandlestick(graph) # specify type of plot output
+
+```
+
+## Plot AMZN and TSLA data together
+
+```{r get amazon data}
+
+getSymbols("AMZN")
+
+# create new df with Amazon and Tesla data
+stocks <- cbind(AMZN[,2:4], TSLA[,2:4])
+```
+
+
+```{r plot AMZN and TSLA}
+
+dygraph(stocks, main = "Amazon and Tesla Share Prices") %>%
+  dySeries(c("AMZN.Low", "AMZN.Close",
+             "AMZN.High"), label = "AMZN") %>%
+  dySeries(c("TSLA.Low", "TSLA.Close",
+             "TSLA.High"), label = "TSLA")
+
+```
+
+
