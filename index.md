@@ -54,7 +54,7 @@
 * [What They Forgot to Teach You About R](https://rstats.wtf/index.html) by Jennifer Bryan and Jim Hester
 * [Tidy Data Tutor](https://tidydatatutor.com/) helps you visualize data analysis pipelines
 * [Common R Mistakes in Data Viz](https://nickch-k.github.io/DataCommSlides/Lecture_04_Common_R_Problems.html) by Nick HK
-
+* [Data Visualization](https://datavizm20.classes.andrewheiss.com/content/) by Andrew Heiss
 
 ### Ggplot2
 * [ggplot2 book](https://ggplot2-book.org/) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen
@@ -139,6 +139,7 @@
 * [GardenR](https://github.com/llendway/gardenR) by Lisa Lendway
 * [R for beginners](https://r4b-vu.netlify.app/?#1) by Ajay Kumar Koli
 * [introverse](https://sjspielman.github.io/introverse/) package and [Introduction to R and RStudio](https://htmlpreview.github.io/?https://github.com/sjspielman/datascience_for_biologists/blob/master/docs/tutorials/introduction_to_R.html) by Stephanie Spielman
+* [Crash Course in R](https://kirstenmorehouse.wordpress.com/354-2/topic-1-crash-course-in-r/) by Kirsten Morehouse
 
 ## R & Statistics
 * [R videos by Kelly Bodwin](https://www.youtube.com/user/SuperKrazy2000)  
