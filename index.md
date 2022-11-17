@@ -11,7 +11,8 @@
 * [Mastering Shiny (book)](https://mastering-shiny.org/) - Build interactive apps, reports and dashboards powered by R
 * [Flex Dashboard](https://pkgs.rstudio.com/flexdashboard/) - Easy interactive dashboards for R
 
-## R Markdown
+## R Markdown & Quarto
+* Improved Rmarkdown: [Quarto](https://quarto.org/)
 * Practical [beginner R RMarkdown workshop](https://www.youtube.com/watch?v=zuYHCl3bSF4) with a statistical focus
 * [Writing dynamic and reproducible documents](https://oliviergimenez.github.io/intro_rmarkdown/#1) - and introduction to R-markdown by Olivier Gimenez ([GitHub repository](https://github.com/oliviergimenez/intro_rmarkdown))
 * [R Markdown](https://slides.djnavarro.net/starting-rmarkdown/#1) by Danielle Navarro (beginner)
@@ -19,6 +20,7 @@
 * [RMarkdown Driven Development](https://rstudio.com/resources/rstudioconf-2020/rmarkdown-driven-development/) (Into to RMarkdown, projects and packages) 
 * [Knitr with R Markdown](https://kbroman.org/knitr_knutshell/pages/Rmarkdown.html)
 * [RMarkdown: reproducible reporting](https://jthomasmock.github.io/rmd-nhs/#1) by Tom Mock
+
 
 ## R Markdown presentations
 * Packages: 
