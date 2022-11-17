@@ -81,6 +81,8 @@
 * [Missing values](https://allisonhorst.shinyapps.io/missingexplorer/) by Allison Horst (beginner) ([video](https://ucsb.app.box.com/s/pr2z7ygeycrfwefmsdknrq3lurzka5ux); [slides](https://docs.google.com/presentation/d/1EzMU6be01aicPGeBcbXrXy1iX8CdWhBz1o2pJDPsXBM/edit#slide=id.p))
 * [The Data Validation Cookbook](https://data-cleaning.github.io/validate/) by Mark P.J. van der Loo
 * [Exploring missing values in naniar](https://allisonhorst.shinyapps.io/missingexplorer/#section-introduction) by Allison Horst
+* [`validate` package](https://cran.r-project.org/web/packages/validate/vignettes/cookbook.html) by MPJ van der Loo and E de Jonge
+* [`data.validator` package](https://appsilon.github.io/data.validator/) by Igras K, Dubel M, Przytuła P.
 
 ## dplyr
 * [Dive into dplyr](https://www.kaggle.com/jessemostipak/dive-into-dplyr-tutorial-1)
