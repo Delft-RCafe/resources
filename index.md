@@ -164,6 +164,9 @@
 * [R Packages book](https://r-pkgs.org/)
 * [R packaging Carpentry Lesson (beta)](https://carpentries-incubator.github.io/lesson-R-packaging/)
 
+## Tables
+[Creating beautiful tables in R with {gt}](https://gt.albert-rapp.de/)
+
 ## Other
 * [Structuring R projects](https://chrisvoncsefalvay.com/2018/08/09/structuring-r-projects/)
 * [{ggxmean}](https://github.com/EvaMaeRey/ggxmean) lets you put a [vertical line at the mean of x](https://evamaerey.github.io/rendered_templates/templates/ggxmean_template#1)
