@@ -155,6 +155,7 @@
 * [7 Draw maps](https://socviz.co/maps.html#maps)
 * [Introduction to GIS in R](https://annakrystalli.me/intro-r-gis/index.html) by Anna Krystalli
 * [Mapping Crime Data with sf](https://www.youtube.com/watch?v=FmW5r6ewt4Y)
+* [Tutorials by Milos Popovic](https://milospopovic.net/blog)
 
 ## Data Cleaning
 * [Data Cleaning with R](https://luisdva.github.io/rstats/data-cleaning-course/) by Luis D. Verde Arregoitia
