@@ -83,7 +83,7 @@
 * [Palettes](https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html)
 * [ggplot2 colour reference list](http://sape.inf.usi.ch/quick-reference/ggplot2/colour)
 * [Colors in R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
-* [Selecting colors from an image](https://www.r-bloggers.com/2022/12/select-colours-from-an-image-in-r-with-eyedropper/?utm_source=phpList&utm_medium=email&utm_campaign=R-bloggers-daily&utm_content=HTML)
+* [Selecting colors from an image](https://github.com/doehm/eyedroppeR)
 
 
 ## Data validation
