@@ -1,4 +1,5 @@
 ## General R resources
+
 * [R for data science](https://r4ds.had.co.nz/)
 * [RStudio4edu](https://rstudio4edu.github.io/rstudio4edu-book/)
 * [Advanced R](https://adv-r.hadley.nz/index.html) by Hadley Wickham
@@ -12,6 +13,7 @@
 * [Flex Dashboard](https://pkgs.rstudio.com/flexdashboard/) - Easy interactive dashboards for R
 
 ## R Markdown & Quarto
+
 * Improved Rmarkdown: [Quarto](https://quarto.org/)
 * Practical [beginner R RMarkdown workshop](https://www.youtube.com/watch?v=zuYHCl3bSF4) with a statistical focus
 * [Writing dynamic and reproducible documents](https://oliviergimenez.github.io/intro_rmarkdown/#1) - and introduction to R-markdown by Olivier Gimenez ([GitHub repository](https://github.com/oliviergimenez/intro_rmarkdown))
@@ -23,6 +25,7 @@
 
 
 ## R Markdown presentations
+
 * Packages: 
   * [xaringan](https://github.com/yihui/xaringan) (see [slides](https://rmarkdown-shilaan.netlify.app/#1) by Shilaan Alzahawi) 
     * [xaringanExtra](https://github.com/gadenbuie/xaringanExtra/) (see [slides](https://slides.garrickadenbuie.com/extra-special-xaringan/#1) and [presentation](https://www.youtube.com/watch?v=RPFh3y9UAX4&list=PL4IzsxWztPdnCC_kMCYKrd_t6cViMhBrD&index=2) by Garrick Aden-Buie et al.)
@@ -50,6 +53,7 @@
 * [Requirements.txt-like file for R (Stack Overflow)](https://stackoverflow.com/questions/38928326/is-there-something-like-requirements-txt-for-r) - various suggestions for creating a dependency file for your R project.
 
 ## Data Visualisation
+
 * [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) by Claus O. Wilke
 * [Data Visualization, A practical introduction](https://socviz.co/) by Kieran Healy
 * [Data visualisation in R](http://satrdayjoburg.djnavarro.net/) by Danielle Navarro (intermediate)
@@ -59,6 +63,7 @@
 * [Data Visualization](https://datavizm20.classes.andrewheiss.com/content/) by Andrew Heiss
 
 ### Ggplot2
+
 * [ggplot2 book](https://ggplot2-book.org/) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen
 * ggplot2 workshop [part 1](https://www.youtube.com/watch?v=h29g21z0a68) and [2](https://www.youtube.com/watch?v=0m4yywqNPVY) by Thomas Lin Pedersen (YouTube)
 * [ggplot 2 tutorial for beginners](https://ggplot2tutor.com/beginner_tutorial/beginner_tutorial/)
@@ -70,6 +75,7 @@
 * [{ggplot2} Wizardry](https://www.youtube.com/watch?v=5KHvEXYtnOo&list=PLd6eTXMmV3X-4-pHkZSJwHRACzSSyeT9T&index=8) by Cédric Sherer
 
 ### Colours
+
 * [Color boxes](https://www.garrickadenbuie.com/blog/little-inline-color-boxes/)
 * [ColorBrewer](https://colorbrewer2.org/#type=sequential&scheme=BuGn&n=3) or [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) for pretty colour schemes with colour-blind friendly options
 * You can also google ‘hex colour picker’ to find hex codes for colours 
@@ -77,15 +83,18 @@
 * [Palettes](https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html)
 * [ggplot2 colour reference list](http://sape.inf.usi.ch/quick-reference/ggplot2/colour)
 * [Colors in R](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+* [Selecting colors from an image](https://www.r-bloggers.com/2022/12/select-colours-from-an-image-in-r-with-eyedropper/?utm_source=phpList&utm_medium=email&utm_campaign=R-bloggers-daily&utm_content=HTML)
 
 
 ## Data validation
+
 * [Missing values](https://allisonhorst.shinyapps.io/missingexplorer/) by Allison Horst (beginner) ([video](https://ucsb.app.box.com/s/pr2z7ygeycrfwefmsdknrq3lurzka5ux); [slides](https://docs.google.com/presentation/d/1EzMU6be01aicPGeBcbXrXy1iX8CdWhBz1o2pJDPsXBM/edit#slide=id.p))
 * [Exploring missing values in naniar](https://allisonhorst.shinyapps.io/missingexplorer/#section-introduction) by Allison Horst
 * [`validate` package](https://cran.r-project.org/web/packages/validate/vignettes/cookbook.html) by MPJ van der Loo and E de Jonge
 * [`data.validator` package](https://appsilon.github.io/data.validator/) by Igras K, Dubel M, Przytuła P.
 
 ## dplyr
+
 * [Dive into dplyr](https://www.kaggle.com/jessemostipak/dive-into-dplyr-tutorial-1)
 * [dplyr tutorial](https://allisonhorst.shinyapps.io/dplyr-learnr/) by Allison Horst (beginner)
 
@@ -111,9 +120,11 @@
 
 
 ## R package repositories
+
 * [ROpenSci](https://ropensci.org/) - help develop R packages for the sciences via community driven learning, review and maintenance of contributed software in the R ecosystem.
 
 ## R for Reproducible Research
+
 * [R Workflow](http://hbiostat.org/rflow/) by Frank E Harrell Jr
 * [PsyTeachR](https://psyteachr.github.io/) - curriculum that emphasizes essential ‘data science’ graduate skills that have been overlooked in traditional approaches to teaching, including programming skills, data visualisation, data wrangling and reproducible reports.
 * [R for Reproducible Research](https://annakrystalli.me/rrresearch/) - This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential. 
@@ -145,12 +156,14 @@
 * [Crash Course in R](https://kirstenmorehouse.wordpress.com/354-2/topic-1-crash-course-in-r/) by Kirsten Morehouse
 
 ## R & Statistics
+
 * [R videos by Kelly Bodwin](https://www.youtube.com/user/SuperKrazy2000)  
 * [Learning Statistics with R](https://bookdown.org/ekothe/navarro26/preface.html) by Danielle Navarro
 * Statistical analyses using R with Amelia McNamara using [base R](https://www.youtube.com/playlist?list=PLik6fAQnSI90bHK9fapPS-eZCUhgROh6S) and the [tidyverse](https://www.youtube.com/playlist?list=PLik6fAQnSI93eBVuAONFBCVdOd7VFhKQX)
 * [COMP/STAT 112](https://ds112-lendway.netlify.app/) by Lisa Lendway (Intermediate)
 
 ## Spatial
+
 * Drawing beautiful maps programmatically with R, sf and ggplot2 — [Part 1: Basics](https://r-spatial.org/r/2018/10/25/ggplot2-sf.html)
 * [7 Draw maps](https://socviz.co/maps.html#maps)
 * [Introduction to GIS in R](https://annakrystalli.me/intro-r-gis/index.html) by Anna Krystalli
@@ -158,17 +171,21 @@
 * [Tutorials by Milos Popovic](https://milospopovic.net/blog)
 
 ## Data Cleaning
+
 * [Data Cleaning with R](https://luisdva.github.io/rstats/data-cleaning-course/) by Luis D. Verde Arregoitia
 
 ## R Package development
+
 * [R package development](http://archaeoinformatics.net/r-package-development/) by Sophie Schmidt
 * [R Packages book](https://r-pkgs.org/)
 * [R packaging Carpentry Lesson (beta)](https://carpentries-incubator.github.io/lesson-R-packaging/)
 
 ## Tables
+
 [Creating beautiful tables in R with {gt}](https://gt.albert-rapp.de/)
 
 ## Other
+
 * [Structuring R projects](https://chrisvoncsefalvay.com/2018/08/09/structuring-r-projects/)
 * [{ggxmean}](https://github.com/EvaMaeRey/ggxmean) lets you put a [vertical line at the mean of x](https://evamaerey.github.io/rendered_templates/templates/ggxmean_template#1)
 * [automated R course](https://github.com/rstudio/rstudio-conf/tree/master/2021/minecetinkayarundel)
