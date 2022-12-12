@@ -96,7 +96,7 @@
 
 ## Data cleaning and data manipulation
 
-* [Data cleaning with janitor](https://github.com/sfirke/janitor](https://sfirke.github.io/janitor/)
+* [Data cleaning with janitor](https://sfirke.github.io/janitor/)
 * [Dive into dplyr](https://www.kaggle.com/jessemostipak/dive-into-dplyr-tutorial-1)
 * [dplyr tutorial](https://allisonhorst.shinyapps.io/dplyr-learnr/) by Allison Horst (beginner)
 
