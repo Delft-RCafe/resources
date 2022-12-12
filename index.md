@@ -94,8 +94,9 @@
 * [`validate` package](https://cran.r-project.org/web/packages/validate/vignettes/cookbook.html) by MPJ van der Loo and E de Jonge
 * [`data.validator` package](https://appsilon.github.io/data.validator/) by Igras K, Dubel M, Przytuła P.
 
-## dplyr
+## Data cleaning and data manipulation
 
+* [Data cleaning with janitor](https://github.com/sfirke/janitor)
 * [Dive into dplyr](https://www.kaggle.com/jessemostipak/dive-into-dplyr-tutorial-1)
 * [dplyr tutorial](https://allisonhorst.shinyapps.io/dplyr-learnr/) by Allison Horst (beginner)
 
