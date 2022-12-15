@@ -156,6 +156,7 @@
 * [R for beginners](https://r4b-vu.netlify.app/?#1) by Ajay Kumar Koli
 * [introverse](https://sjspielman.github.io/introverse/) package and [Introduction to R and RStudio](https://htmlpreview.github.io/?https://github.com/sjspielman/datascience_for_biologists/blob/master/docs/tutorials/introduction_to_R.html) by Stephanie Spielman
 * [Crash Course in R](https://kirstenmorehouse.wordpress.com/354-2/topic-1-crash-course-in-r/) by Kirsten Morehouse
+* [Introduction to R](https://www.youtube.com/watch?v=Rs8QwC1NaCY) by Dr Joscelin Rocha-Hidalgo 
 
 ## R & Statistics
 
