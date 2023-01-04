@@ -6,6 +6,7 @@
 * [R ladies Tunis YouTube channel](https://www.youtube.com/channel/UCfoktGmvJ6rnME7mSP_Ww2g/videos)
 * [Advanced Data Science in R](https://advanced-ds-in-r.netlify.app/) and [Data Science skills using R](https://ds112-lendway.netlify.app/) by Lisa Lendway
 * [R packages](https://r-pkgs.org/) by Hadley Wickham and Jenny Bryan
+* [RCrashCourse](https://colauttilab.github.io/RCrashCourse) by Rob Colautti
 
 ## Building Apps in R
 
