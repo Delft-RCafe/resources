@@ -1,0 +1,182 @@
+---
+title: "Dealing with Messy Data"
+output: html_notebook
+author: Rodrigo Revilla Llaca
+date: January 13th, 2022
+---
+
+## Dealing with Messy Data - PDFs
+
+### Motivation
+
+When learning to process and analyze data, we are generally given a ready-to-use data set that can be directly imported into our favorite software (R!). However, in practice it is very common to deal with information that lacks a structured format, or whose final purpose was not necessarily analysis (e.g. publications. In my professional career, I have many times stumbled upon this situation and have therefore developed a series of skills to get through it.
+
+## Introduction
+
+Today we are going to focus specifically on PDFs containing tables and / or text. Manually copying the information from the file to an Excel file is feasible, but can get very time consuming and prone to errors. Automating the extraction of information results is a consistent (as long as the structure of the file remains the same) and time efficient process in a short term.
+
+![](https://i.redd.it/8cgqicqyl4q51.jpg){width="399"}
+
+We will focus on a file containing the results of a political election in Spain available [here!](https://www.urjc.es/images/elecciones_rector/Resultados%20Definitivos%201ª%20Vuelta.pdf) We first take some time to explore the structure of the files, identify patterns and locate the important information.
+
+<!-- -->
+
+    We will extract the results per municipality from a voting process and transform them into a clean database.
+
+## ![](images/sector_votes.png)Set Up
+
+```{r}
+R.version
+```
+
+```{r}
+library(dplyr)
+library(pdftools)
+library(stringr)
+library(janitor)
+```
+
+## Election Results
+
+```{r}
+#Download file
+url_1 = "shorturl.at/mtAB1"
+download.file(url = url_1, destfile = "elections_data.pdf",mode="wb")
+```
+
+```{r}
+#Load to R
+#library(here)
+election_data <- pdf_text("elections_data.pdf")
+
+#Election data is a list (character) containing the information. Each element in the list corresponds to a page in the PDF. 
+View(election_data)
+View(election_data[4])
+
+
+#We use cat to concatenate the content and print the information
+cat(election_data[1])
+```
+
+We experiment a bit with the information contained in the first page, looking for a pattern
+
+```{r}
+#Election_data: list (one element per page)
+
+#Split into a list containing one element per row
+first_page <- strsplit(election_data[1],"\n")[[1]]
+#Remove leading and trailing whitespaces
+first_page <- trimws(first_page)
+#Remove blank lines
+first_page <- first_page[first_page!=""]
+
+#We only want to keep the information between the line containing sector names (A,B,C,D) and the last candidate (Rafael C. van Grieken Salvador)
+from <- grep("SECTORES",first_page) + 1
+to <- grep("Salvador",first_page)[1]
+first_page <- first_page[from:to]
+```
+
+## RegEx
+
+Regular Expression. It allows to search pretty much anything in a text.
+
+Recommended reference book: [Regular Expressions Cookbox (2nd Ed)](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/)
+
+Useful webpage: <https://regexr.com>
+
+```{r}
+
+#We use the function str_split_fixed to split each line into 5 columns
+#Our regular expression finds two or more continous spaces. 
+first_page <- str_split_fixed(first_page,"[ ]{2,}",5)
+
+#First_page is no longer a list. It has been transformed into a matrix 
+
+#Fix displaced rows
+for (row in 1:dim(first_page)[1]) {
+  if (first_page[row,5]=="" & first_page[row,2]!="") {
+    row_info <- first_page[row,]
+    row_info <- c("",row_info[1:length(row_info)-1])
+    first_page[row,] <- row_info
+  }
+}
+
+#We convert matrix into data frame
+first_page <- data.frame(first_page)
+
+#First row to header
+first_page <- first_page %>% row_to_names(1) %>% rename(name=1)
+
+#Collapse rows that were split up
+number_of_candidates <- (nrow(first_page)-5)/3
+new_row_id <- c(1:5,rep(6:(6+number_of_candidates-1),each=3))
+first_page$row_id <- new_row_id
+first_page <- first_page %>% group_by(row_id) %>% summarise_all(paste,collapse=" ")
+first_page
+```
+
+We wrap in a function with some adjustments to work for different pages
+
+```{r}
+retrieve_table <- function(page_no, headers=1) {
+  
+  page <- strsplit(election_data[page_no],"\n")[[1]]
+  page <- trimws(page)
+  page <- page[page!=""]
+  from <- grep("SECTOR",page) + 1
+  to <- grep("Salvador",page)[1]
+  page <- page[from:to]
+  no_cols <- str_split(page[3]," {2,}")[[1]] %>% length()
+  page <- str_split_fixed(page," {2,}",no_cols)
+  
+  for (row in 1:dim(page)[1]) {
+    if (page[row,no_cols]=="" & page[row,2]!="") {
+      row_info <- page[row,]
+      row_info <- c("",row_info[1:length(row_info)-1])
+      page[row,] <- row_info
+    }
+  }
+  
+  page <- data.frame(page)
+  #Collapse rows that were split up
+  number_of_candidates <- (nrow(page)-(5+headers))/3
+  new_row_id <- c(rep(1,headers),2:6,rep(7:(7+number_of_candidates-1),each=3))
+  page$row_id <- new_row_id
+  page <- page %>% group_by(row_id) %>% summarise_all(paste,collapse=" ") %>% select(-row_id)
+  #First row to header
+  page <- page %>% row_to_names(1) %>% rename(name=1)
+  return(page)
+}
+```
+
+We can now use our function!
+
+```{r}
+retrieve_table(page_no = 5, headers = 2)
+retrieve_table(page_no = 7, headers = 1)
+
+```
+
+## More on Messy Data
+
+Hopefully by now you have realized how powerful this kind of script can be. It can be used to structure and parse basically any kind of information to a dataframe or similar.
+
+A key package for this kind of work is [janitor](https://cran.r-project.org/web/packages/janitor/vignettes/janitor.html). We barely used it here, but it has a ton of functions we can use when loading poorly structured information.
+
+**Future sessions**
+
+If you are interested in more Messy Data sessions in the future, please reach out! Examples:
+
+-   Reading messy Excel files (information spread across files, missing rows, missing headers, reading format, etc)
+
+-   Reading messy csv files (reading multiple files and binding them, charset errors, missing information, non-standard separators)
+
+-   Scraping information off websites
+
+-   Extracting information from figures in PDFs
+
+-   Parsing long strings (e.g. a book)
+
+-   Parsing APIs (although not strictly messy, this can be challenging at times....)
+
+-   Other ideas welcome!
