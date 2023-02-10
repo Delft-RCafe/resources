@@ -31,6 +31,13 @@ rrtools::create_compendium("./myCompendium")
 # remove .Rprofile if present
 ```
 
+The structure includes setting up `.gitignore`, and `.Rbuildignore` to ignore files that shouldn't be tracked
+in git and shouldn't be included in the R package. It also
+sets up essential R package files like `DESCRIPTION` and `NAMESPACE`,
+with some initial dependencies. Most importantly, it sets up the
+`analysis/` directory which will contain the main analysis
+of the research project, including data, code, and manuscript (with formatting).
+
 Some files will need to be modified.
 
 You can add your information to the `DESCRIPTION` file under `Authors@R`, as
@@ -64,6 +71,8 @@ changes you make to `README.md` will be lost when you knit `README.Rmd`.**
 
 ## Analysis
 
+You can already render the example paper, `analysis/paper/paper.qmd`.
+
 ### Data
 
 Let's generate a fake data frame and add it to the `analysis/data/raw_data/`
@@ -95,12 +104,14 @@ data$bmi <- weight / height_m ** 2
 plot(height ~ weight, data)
 ```
 
+Optionally add a caption for the plot.
+
 Then add **readr** as a dependency:
 
 ```
 usethis::use_package("readr")
 # or
-rrtools::add_dependencies_to_description()
+rrtools::add_dependencies_to_description() # searches directory for calls to library and require
 ```
 
 Render the document.
