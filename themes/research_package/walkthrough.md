@@ -20,8 +20,8 @@ Load functions via library(package) (after running devtools::install())
 Required packages:
 
 ```r
-devtools::install_github("benmarwick/rrtools")
 install.packages(c("renv", "here", "tidyverse", "devtools"))
+devtools::install_github("benmarwick/rrtools")
 ```
 
 create a simple research compendium structure:
