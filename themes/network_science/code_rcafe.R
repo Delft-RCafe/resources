@@ -1,4 +1,4 @@
-setwd("")
+#setwd("")
 
 #install.packages("psych")
 #install.packages("bootnet")
@@ -7,6 +7,7 @@ setwd("")
 #install.packages("memisc")
 #install.packages("NetworkComparisonTest")
 #install.packages("graphicalVAR")
+#install.packages("here")
 
 library(psych)
 library(bootnet)
@@ -15,6 +16,7 @@ library(qgraph)
 library(memisc)
 library(NetworkComparisonTest)
 library(graphicalVAR)
+library(here)
 
 #Load data
 data("bfi")
@@ -138,7 +140,7 @@ qgraph(fit_ADS$pairwise$wadj,
        edge.color = fit_ADS$pairwise$edgecolor)
 
 #MAKE YOUR OWN NETWORK
-dataset <- data.frame(as.data.set(spss.system.file("/Users/administrator/Desktop/PhD/Conferences/TU Delft - R café/PTSD2017code.sav")))
+dataset <- data.frame(as.data.set(spss.system.file(here("data/PTSD2017code.sav"))))
 
 #EXPLORE YOUR NETWORK
 
@@ -193,7 +195,7 @@ summary(compare)
 compare$einv.pvals[which(compare$einv.pvals[,3]<0.05),]
 
 #TEMPORAL NETWORKS
-ESMdataset <- read.csv("/Users/administrator/Desktop/PhD/Conferences/TU Delft - R café/ESMdata.csv", header=TRUE, stringsAsFactors=FALSE)
+ESMdataset <- read.csv(here("data/ESMdata.csv"), header=TRUE, stringsAsFactors=FALSE)
 
 vars = c("mood_relaxed", "mood_down", "mood_irritat", "mood_satisfi", "mood_lonely", "mood_anxious", "mood_enthus", "mood_suspic",     "mood_cheerf", "mood_guilty", "mood_doubt", "mood_strong")
 
