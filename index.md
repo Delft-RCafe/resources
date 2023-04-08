@@ -158,6 +158,7 @@
 * [introverse](https://sjspielman.github.io/introverse/) package and [Introduction to R and RStudio](https://htmlpreview.github.io/?https://github.com/sjspielman/datascience_for_biologists/blob/master/docs/tutorials/introduction_to_R.html) by Stephanie Spielman
 * [Crash Course in R](https://kirstenmorehouse.wordpress.com/354-2/topic-1-crash-course-in-r/) by Kirsten Morehouse
 * [Introduction to R](https://www.youtube.com/watch?v=Rs8QwC1NaCY) by Dr Joscelin Rocha-Hidalgo 
+* [The GRAPH Courses](https://www.youtube.com/watch?v=2aHGC8vCcOE&list=PLkkleDPMR2sU2Y6H4fDBi9msOarZWOcBB)
 
 ## R & Statistics
 
