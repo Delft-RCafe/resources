@@ -62,7 +62,7 @@ The Shiny app is divided into two parts: **ui** and **server**. These two compon
 
 `ui` (user interface) is where you define how your app will look like. You specify elements of the layout and define where different elements (e.g. tables, graphs, filters) will be placed.
 
-`ui` is an object, created by the `fluidpage` function. Each element of the `ui` is an argument of the `fluidpage` function, so they need to be separated by **comas**. 
+`ui` is an object, created by the `fluidPage()` function. Each element of the `ui` is an argument of the `fluidPage()` function, so they need to be separated by **comas**. 
 
 ## `server` 
 
@@ -203,6 +203,7 @@ server <- function(input, output){
 }
 ```
 
+we used a `plotOutput()` function together with it's ID (`"diamonds_plot"`) to display the output. The are number of `render*` and `*Output` functions that work together, each for a different generated object. You can have a [cheatsheet here](https://shiny.posit.co/r/getstarted/build-an-app/images/cheatsheet-outputs.png) to find more examples.
 
 # Control widgets (aka filters)
 
@@ -224,7 +225,7 @@ ui <- fluidPage(
 
 
 ```
-In this case we used sliderInput but there are number of possibilities. The input has to has an ID (`"point_size"`), label (it will be displayed on top of the control), and in case of the slider, minimum, maximum and selected value. 
+In this case we used `sliderInput()` but there are number of possibilities - please have a look at the [control widgets gallery](https://shiny.posit.co/r/gallery/widgets/widget-gallery/?_gl=1*v8tpcr*_ga*NjU0NjYwMTIzLjE2ODQ3NjM3NjE.*_ga_2C0WZ1JHG0*MTY4NTEzMDQ3Ny40LjAuMTY4NTEzMDQ3Ny4wLjAuMA..) for more options. The input has to has an ID (`"point_size"`), label (it will be displayed on top of the control), and in case of the slider, minimum, maximum and selected value. 
 
 The ID is particularly important, because it's identifies the input and allows it to be used int the s  `server`.
 
@@ -328,7 +329,7 @@ server <- function(input, output){
 ```
 
 
-And now let's create another object, e.g. a table
+And now let's create another object, e.g. a table.
 
 ```{r}
 #| eval: false
@@ -452,6 +453,7 @@ Like that you can include some more information about your points/ diamonds that
 
 # UI layout
 
+We won't have time to talk about layout, but here's an [article on how to organize your app the way you want](https://shiny.posit.co/r/articles/build/layout-guide/). You can have a sidebar menu, tabsets and many more. 
 
 # Publishing your app
 

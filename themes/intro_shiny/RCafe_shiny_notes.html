@@ -2628,8 +2628,17 @@ vertical-align: -.125em;
 <section id="why-shiny" class="level1">
 <h1>Why Shiny?</h1>
 </section>
-<section id="some-examples" class="level1">
-<h1>Some Examples</h1>
+<section id="some-examples-of-shiny-apps-used-in-research" class="level1">
+<h1>Some Examples of Shiny apps used in Research</h1>
+<ul>
+<li><p><a href="https://gallery.shinyapps.io/genome_browser/">ICGC Pancreatic Cancer Genome Viewer</a></p></li>
+<li><p><a href="https://haozhu233.shinyapps.io/shinyMRI-contest/">Shiny MRI</a></p></li>
+<li><p><a href="http://www.graphbio1.com/en/">GraphBIO</a> - allows file upload</p></li>
+<li><p><a href="https://fossilfueltracker.org/app/ffnpt">Fossil Fuel Non-Proliferation Tracker</a></p></li>
+<li><p><a href="https://whoequity.shinyapps.io/heat/#">WHO Health Equity Assessment Toolkit</a></p></li>
+<li><p><a href="https://app.axiaal.com/Blinded_interim_simulations/">Interim Bias Simulations</a> - collects user input</p></li>
+<li><p><a href="https://sasap-data.shinyapps.io/board_of_fisheries/">Alaska Board of Fisheries Proposals</a></p></li>
+</ul>
 </section>
 <section id="installation" class="level1">
 <h1>Installation</h1>
@@ -2651,7 +2660,7 @@ vertical-align: -.125em;
 <section id="ui" class="level2">
 <h2 class="anchored" data-anchor-id="ui"><code>ui</code></h2>
 <p><code>ui</code> (user interface) is where you define how your app will look like. You specify elements of the layout and define where different elements (e.g. tables, graphs, filters) will be placed.</p>
-<p><code>ui</code> is an object, created by the <code>fluidpage</code> function. Each element of the <code>ui</code> is an argument of the <code>fluidpage</code> function, so they need to be separated by <strong>comas</strong>.</p>
+<p><code>ui</code> is an object, created by the <code>fluidPage()</code> function. Each element of the <code>ui</code> is an argument of the <code>fluidPage()</code> function, so they need to be separated by <strong>comas</strong>.</p>
 </section>
 <section id="server" class="level2">
 <h2 class="anchored" data-anchor-id="server"><code>server</code></h2>
@@ -2783,6 +2792,7 @@ vertical-align: -.125em;
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>we used a <code>plotOutput()</code> function together with it’s ID (<code>&quot;diamonds_plot&quot;</code>) to display the output. The are number of <code>render*</code> and <code>*Output</code> functions that work together, each for a different generated object. You can have a <a href="https://shiny.posit.co/r/getstarted/build-an-app/images/cheatsheet-outputs.png">cheatsheet here</a> to find more examples.</p>
 </section>
 </section>
 <section id="control-widgets-aka-filters" class="level1">
@@ -2797,7 +2807,7 @@ vertical-align: -.125em;
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotOutput</span>(<span class="st">&quot;diamonds_plot&quot;</span>)</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In this case we used sliderInput but there are number of possibilities. The input has to has an ID (<code>&quot;point_size&quot;</code>), label (it will be displayed on top of the control), and in case of the slider, minimum, maximum and selected value.</p>
+<p>In this case we used <code>sliderInput()</code> but there are number of possibilities - please have a look at the <a href="https://shiny.posit.co/r/gallery/widgets/widget-gallery/?_gl=1*v8tpcr*_ga*NjU0NjYwMTIzLjE2ODQ3NjM3NjE.*_ga_2C0WZ1JHG0*MTY4NTEzMDQ3Ny40LjAuMTY4NTEzMDQ3Ny4wLjAuMA..">control widgets gallery</a> for more options. The input has to has an ID (<code>&quot;point_size&quot;</code>), label (it will be displayed on top of the control), and in case of the slider, minimum, maximum and selected value.</p>
 <p>The ID is particularly important, because it’s identifies the input and allows it to be used int the s <code>server</code>.</p>
 <p>Once you add this and run the app, a nice slider will appear, but nothing happens when you move the arrow. Why?</p>
 <p>It’s because that the information has not been passed to the server. Let’s fix it!</p>
@@ -2876,7 +2886,7 @@ vertical-align: -.125em;
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  })</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And now let’s create another object, e.g. a table</p>
+<p>And now let’s create another object, e.g. a table.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>output<span class="sc">$</span>diamonds_table <span class="ot">&lt;-</span> <span class="fu">renderTable</span>({</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  diamonds_new <span class="sc">%&gt;%</span></span>
@@ -2966,12 +2976,36 @@ vertical-align: -.125em;
 </section>
 <section id="ui-layout" class="level1">
 <h1>UI layout</h1>
+<p>We won’t have time to talk about layout, but here’s an <a href="https://shiny.posit.co/r/articles/build/layout-guide/">article on how to organize your app the way you want</a>. You can have a sidebar menu, tabsets and many more.</p>
 </section>
-<section id="sharing-the-app" class="level1">
-<h1>Sharing the app</h1>
+<section id="publishing-your-app" class="level1">
+<h1>Publishing your app</h1>
+<p><a href="https://www.shinyapps.io/">ShinyApps.io</a> is a web service that will let you share your shiny apps. You sign up for an account, then you can publish your Shiny apps for free. The free account level has a limited number of apps (10), and a limited number of hours of usage per month, but this will often do for simple models without a lot of usage. You can update your account from the free tier to accommodate more usage per month if it is popular. There are a number of tiers (Starter, Basic, Standard, and Professional) at different price points and usage volumes. Each app gets a unique web URL, which you can share with others, in the format: https://username.shinyapps.io/webapp_name/</p>
+<p>After creating a free account at https://www.shinyapps.io/, to link your account with your RStudio application,</p>
+<ul>
+<li>In RStudio, open the Tools menu and select Global Options.</li>
+<li>Click on the Publishing tab on the left.</li>
+<li>Click on Connect on the right.</li>
+<li>Select shinyapps.io.</li>
+<li>Follow the instructions to input your token.</li>
+</ul>
+<p>To publish from RStudio:</p>
+<ul>
+<li>Open the app.R file in RStudio.</li>
+<li>Click on the Publish icon (blue circle) in the top-right of the Source pane, or the arrow next to it.</li>
+<li>Select files to be published: your app.R file and any other data files or images.</li>
+<li>Select your account.</li>
+<li>Provide a title for your app.</li>
+<li>Click Publish.</li>
+</ul>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
+<p>Some excellent resources for learning more about Shiny web apps, dashboards, etc. can be found at:</p>
+<p>Lots of introductory material can be found at the <a href="https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html">RStudio Tutorial Webpage</a> with 32 video lessons in 3 parts. Follow the link to get started.</p>
+<p><a href="https://bookdown.org/hadrien/how_to_build_a_shiny_app_from_scratch/">How to Build a Shiny App from Scratch</a> is a nice free e-book, and a more complete introduction to building Shiny apps.</p>
+<p>The <a href="https://mastering-shiny.org/">Mastering Shiny</a> e-book takes you further under the hood, explaining how Shiny works, with excellent explanations of reactivity and more advanced Shiny programming.</p>
+<p>Check out this step by <a href="https://statsandr.com/blog/how-to-publish-shiny-app-example-with-shinyapps-io/">step guide to publishing a Shiny app</a> on shinyapps.io</p>
 </section>
 
 </main>
