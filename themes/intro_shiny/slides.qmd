@@ -1,0 +1,37 @@
+---
+title: "A Gentle Introduction to Building Web Apps with R Shiny"
+subtitle: "Aleks Wilczynska and Ashley Cryan"
+title-slide-attributes:
+  data-background-size: contain
+  data-background-color: black
+  data-background-opacity: "0.5"
+author: "R Café @ TU Delft "
+date: 2023-05-30
+format: 
+  revealjs:
+    fig-cap-location: margin  
+    logo: img/logo.png
+    chalkboard: true
+    incremental: true 
+    mouse-wheel: true 
+    theme: [default, custom.scss]
+---
+
+## {background-color="black" background-image="img/logo_rectangular.png" background-size="1000px" }
+
+
+## Icebreaker `r emo::ji("icecream")`
+
+
+- Have you ever had a "lightbulb" moment when coding with R when something suddenly clicked or made sense? What was it?
+
+- What are some programming goals you have for yourself in the near future? Is there something specific you'd like to learn or accomplish?
+
+- If your code had a theme song that played whenever it executed successfully, what song would it be and why?
+
+. . .
+
+
+
+
+
