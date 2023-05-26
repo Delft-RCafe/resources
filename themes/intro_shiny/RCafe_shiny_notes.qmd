@@ -1,0 +1,202 @@
+---
+title: "Notes for Shiny RCafe"
+format: html
+---
+
+```{r setup}
+#| include: false
+#| echo: false
+
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+# What is Shiny? 
+
+
+# Why Shiny?
+
+
+# Some Examples
+
+# Installation
+
+Install needed packages: 
+
+```{r install-packages}
+# install.packages("shiny")
+# install.packages("tidyverse")
+```
+
+
+# App structure
+
+The Shiny app is divide into two parts: **ui** and **server**. These two components can be saved in a project separately as `ui.R` and `server.R` or in a single script in `app.R`. Our app is not going to be very extensive, so we can keep it in a single file. but if you're working on a bigger project, it might be a good idea to separate it. If your working on a very big projects, there are ways to compartmentalize your work further (i.e. Shiny modules), but we're not going to delve into that today. 
+
+
+![Illustration: Vivian Peng](img/architecture_peng.jpg)
+
+## `ui`
+
+`ui` (user interface) is where you define how your app will look like. You specify elements of the layout and define where different elements (e.g. tables, graphs, filters) will be placed.
+
+`ui` is an object, created by the `fluidpage` function. Each element of the `ui` is an argument of the `fluidpage` function, so they need to be separated by **comas**. 
+
+## `server` 
+
+`server` is where you run your r code, e.g. define your graphs, adapt your datasets, etc. The results of what you create in the server will be passed to the `ui` (more on this later). 
+
+`server` *is* a function with at two (or three) arguments: `input`, `output`. (and `session`). We will leave out `session` argument for now, and focus on `input` and `output` in a minute. 
+
+As `server` is a function and it uses curly brackets, each new command is separated by a new line. 
+
+
+# Create a simple app
+
+First, let's create a simple app. You can create it in your working directory (the folder you're working in now), or preferably you create a new project for this. In the new project, you create an empty R script and save it as `app.R`.
+
+First, let's include  the packages you'll be using in the script: 
+
+```{r load-packages}
+# Load libraries ---- 
+
+library(shiny)
+library(tidyverse)
+```
+
+Now, let's define the `ui` and `server`:
+
+```{r define-app}
+
+ui <- fluidPage()
+
+server <- function(input, output){}
+```
+
+Finally, we need to add a command that tells R to run the app using the `ui` and `server` components:
+ 
+```{r run-app}
+shinyApp(ui = ui, server = server)
+```
+ 
+You can now click on `Run App` button (upper-right corner of your script window) and you will get the pop-up window. It's normal that it's empty. We have not defined any content yet!
+
+
+# `diamonds` dataset
+We will work with the `diamonds` dataset available with `ggplot2` library. If you have the packages we need loaded you should be able to see the dataset. You're free to work on your own data if you prefer. You can run this in the console: 
+
+```{r view-data}
+View(diamonds)
+str(diamonds)
+```
+
+There's a useful documentation in the help pages that you can access with a question mark:
+```{r data-help}
+#| eval: false
+?diamonds
+```
+
+
+# `input` and `output`
+ Let's talk more about inputs and outputs. These are key elements of a Shiny app. Thanks to them the `ui` and `server` can communicate. In practical terms `input` and `output` are named lists (i.e. list in which each of elements has a name). 
+ 
+ - `input`
+   + every interaction of the user with the `ui` (e.g. a click on a button, adjustment of filters, etc.) is stored in `input` list.  This information is passed on to the `server` and can be used there. 
+   + `server` listens for changes in the `input` list
+ - `output`
+   + every object to be displayed in the app is stored in the `output` list in the `server` and passed on to `ui`. 
+   + `ui` listens for changes in the `output` list. 
+   
+In other words, outputs are created in `server` and displayed in `ui` and inputs emerge in `ui` and are used for calculations/adapting the code in `server`.
+
+## Outputs
+
+We'll first focus on outputs. As mentioned, outputs, can be for example graphs. Let's start by creating a regular ggplot graph: 
+
+```{r create-graph}
+diamonds_plot <- ggplot(data = diamonds) +
+  aes(x = carat,
+      y = price, 
+      color = color) +
+  geom_point(size = 3,
+             shape = 19,
+             alpha = 0.5
+             )
+
+```
+ 
+ Let's now plug this graph in to the Shiny . Within the `server` function, you need to create the an output : 
+ 
+```{r create-output}
+#| eval: false
+
+server <- function(input, output){
+  
+  output$diamonds_plot <- renderPlot({
+       
+     ggplot(data = diamonds) +
+  aes(x = carat,
+      y = price, 
+      color = color) +
+  geom_point(size = 3,
+             shape = 19,
+             alpha = 0.5
+             )
+    })
+    
+
+}
+
+```
+
+Notice that we generated a plot with a function `renderPlot({})` and assigned it to an element of the `output` list called `diamonds_plot`. This way we pass the information that there is an output called `diamonds_plot` to be displayed.
+ 
+
+But when we run the app now, we can see that nothing has changed. Do you know why??
+
+It's because the output has not been passed to the server. Let's fix it: 
+
+```{r ui-output}
+#| eval: false
+
+ui <- fluidPage(
+  plotOutput("diamonds_plot")
+)
+
+server <- function(input, output){
+  
+  output$diamonds_plot <- renderPlot({
+       
+     ggplot(data = diamonds) +
+  aes(x = carat,
+      y = price, 
+      color = color) +
+  geom_point(size = 3,
+             shape = 19,
+             alpha = 0.5
+             )
+    })
+    
+
+}
+```
+
+
+
+
+   
+
+# Control widgets (aka filters)
+
+# Reactivity
+
+# UI layout
+
+# interactive plots (`plotly`)
+
+# Sharing the app
+
+# References
