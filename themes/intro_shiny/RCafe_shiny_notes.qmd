@@ -23,7 +23,22 @@ knitr::opts_chunk$set(
 # Why Shiny?
 
 
-# Some Examples
+# Some Examples of Shiny apps used in Research
+
+* [ICGC Pancreatic Cancer Genome Viewer](https://gallery.shinyapps.io/genome_browser/)
+
+* [Shiny MRI](https://haozhu233.shinyapps.io/shinyMRI-contest/)
+
+* [GraphBIO](http://www.graphbio1.com/en/) - allows file upload
+
+* [Fossil Fuel Non-Proliferation Tracker](https://fossilfueltracker.org/app/ffnpt)
+
+* [WHO Health Equity Assessment Toolkit](https://whoequity.shinyapps.io/heat/#)
+
+* [Interim Bias  Simulations](https://app.axiaal.com/Blinded_interim_simulations/) - collects user input
+
+* [Alaska Board of Fisheries Proposals](https://sasap-data.shinyapps.io/board_of_fisheries/)
+
 
 
 # Installation
@@ -438,6 +453,35 @@ Like that you can include some more information about your points/ diamonds that
 # UI layout
 
 
-# Sharing the app
+# Publishing your app
+
+[ShinyApps.io](https://www.shinyapps.io/) is a web service that will let you share your shiny apps. You sign up for an account, then you can publish your Shiny apps for free. The free account level has a limited number of apps (10), and a limited number of hours of usage per month, but this will often do for simple models without a lot of usage. You can update your account from the free tier to accommodate more usage per month if it is popular. There are a number of tiers (Starter, Basic, Standard, and Professional) at different price points and usage volumes. Each app gets a unique web URL, which you can share with others, in the format: https://username.shinyapps.io/webapp_name/
+
+After creating a free account at https://www.shinyapps.io/, to link your account with your RStudio application,
+
+* In RStudio, open the Tools menu and select Global Options.
+* Click on the Publishing tab on the left.
+* Click on Connect on the right.
+* Select shinyapps.io.
+* Follow the instructions to input your token.
+
+To publish from RStudio:
+
+* Open the app.R file in RStudio.
+* Click on the Publish icon (blue circle) in the top-right of the Source pane, or the arrow next to it.
+* Select files to be published: your app.R file and any other data files or images.
+* Select your account.
+* Provide a title for your app.
+* Click Publish.
 
 # References
+
+Some excellent resources for learning more about Shiny web apps, dashboards, etc. can be found at:
+
+Lots of introductory material can be found at the [RStudio Tutorial Webpage](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/index.html) with 32 video lessons in 3 parts. Follow the link to get started.
+
+[How to Build a Shiny App from Scratch](https://bookdown.org/hadrien/how_to_build_a_shiny_app_from_scratch/) is a nice free e-book, and a more complete introduction to building Shiny apps.
+
+The [Mastering Shiny](https://mastering-shiny.org/) e-book takes you further under the hood, explaining how Shiny works, with excellent explanations of reactivity and more advanced Shiny programming.
+
+Check out this step by [step guide to publishing a Shiny app](https://statsandr.com/blog/how-to-publish-shiny-app-example-with-shinyapps-io/) on shinyapps.io 
