@@ -1,51 +1,48 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
+# load libraries 
 
 library(shiny)
+library(tidyverse)
+library(plotly)
 
-# Define UI for application that draws a histogram
 ui <- fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot")
-        )
-    )
+  sliderInput("point_size", "Change size of the points:", 1, 10, 3)
+  ,
+  selectInput("cut_filter", label = "Choose cut quality" , choices = levels(diamonds$cut) ),
+  plotlyOutput("diamonds_plot"),
+  tableOutput("diamonds_table")
 )
 
-# Define server logic required to draw a histogram
-server <- function(input, output) {
-
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
-    })
+server <- function(input, output){
+  
+  diamonds_new <- reactive({diamonds %>%
+      filter(cut == input$cut_filter)
+  })
+  
+  output$diamonds_plot <- renderPlotly({
+    
+    p <- ggplot(data = diamonds_new()) +
+      aes(x = carat,
+          y = price, 
+          color = color,
+          cut = cut,
+          clarity = clarity, 
+          table = table
+          ) +
+      geom_point(size = input$point_size,
+                 shape = 19,
+                 alpha = 0.5
+      )
+    
+    ggplotly(p)
+    
+  })
+  
+  
+  output$diamonds_table <- renderTable({
+    diamonds_new() %>%
+      arrange(price) %>%
+      head(10)
+  })
 }
 
-# Run the application 
 shinyApp(ui = ui, server = server)
