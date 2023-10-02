@@ -1,0 +1,620 @@
+---
+title: "Use APIs to source your data in R"
+format: 
+  html:
+    toc: true
+    toc-location: left
+    self-contained: true
+    
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(httr2)
+library(emo)
+```
+
+
+## Welcome (5min)
+
+- TU Delft R Cafe is an initiative supported by Open Science Community Delft (OSCD)
+- We're organizing a Plot-a-thon (11/10); Next session 17th November
+- Ice breaking 
+
+
+## What is API? (10min)
+
+An [API](https://www.freecodecamp.org/news/what-is-an-api-in-english-please-b880a3214a82/)
+(Application Programming Interface) is used for computer programs to communicate with each other.
+
+In the session today, we will focus on the APIs that allow us to upload, 
+download and search for data. In this context, 
+API is an intermediary between a dataset 
+(usually a very large one) and the rest of the world. 
+APIs provide an accessible way to request a dataset, 
+which is referred to as making a *call* to the API. 
+
+The commonly used type of an API, that we will also use today, 
+is a REST (Representational State Transfer) API (also called RESTful). 
+This kind of API uses HTTP protocol 
+to send request to a server and receive a standardized response. 
+
+
+### REST API methods
+
+![*Source:* https://www.numpyninja.com/post/rest-api-for-dummies-explained-using-mommies ](img/rest_api.jpg) 
+
+
+There are five HTTP methods that you can use when making an API request:
+
+- `GET` - This method is used to retrieve a data from database / server.
+
+- `POST` - This method is used to create a new record.
+
+- `PUT` - This method is used to modify / replace the record. It replaces the entire record.
+
+- `PATCH` - This method is used to modify / update the record. It replaces parts of the record.
+
+- `DELETE` - This method is used to delete the record.
+
+
+### Request structure
+
+![*Source:* https://www.altexsoft.com/blog/rest-api-design/ ](img/rest_request.png)
+
+Apart from the HTTP methods, you need a few other components to make the API request. The components are: 
+
+- **HTTP method** - to explain what action you want to perform
+- **endpoint** - a URL to find the resource you are trying to reach on the Internet. The endpoint contains of **Base URL** (or root endpoint) - a consistent part of the URL to use and **relative URL** - reference to specific resource you want to access.
+- **headers** - provides information relevant both for client (us) and the server.It can be used for example for authentication or to provide information about the body content.See the full list of valid [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)
+- **body** - contains data that you want to send to the server. 
+
+:::{.callout-info}
+## Passing parameters
+- `GET` request parameters are usually included in the endpoint URL.  
+- `PUT` and `POST` methods accept parameters in the request body.
+
+:::
+
+### HTTP status codes 
+
+Once you send the request to the server, you will receive a response with a status code. Here are some responses that you might see: 
+
+| **Status Code**           | **Description**             |
+|---------------------------|-----------------------------|
+| 200 OK                    | Request has succeeded       |
+| 201 Created               | Request has succeeded and  a new resource has been  created as a result         |
+| 400 Bad Request           | Request could not be understood due to incorrect syntax |
+| 403 Forbidden             | Client does not have  access rights to the content|
+| 404 Not Found             | Server can not find the  requested resource          |
+| 500 Internal server error | Server encountered an unexpected condition that prevented it from fulfilling the request                           |
+
+Any status codes in the 200s mean the request was successful (although this doesn't
+necessarily mean it did what you wanted it to do). The 400s mean we did
+something wrong. 500s means something is likely wrong on the other end.
+We might see `401`, which means we either aren't authorised to access what we
+are trying to access, or our authentication step went wrong.
+A `404` means the resource we are looking for was not found (just like for websites).
+
+Please see the full list of [HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#client_error_responses).
+
+### Authentication 
+
+The APIs that we're going deal with today are public APIs - anyone can access them. However, usually you need to authenticate yourself to be able to use them (especially if you're using a method that alters the database). There are a few ways to do that, but today we will discuss (and use) authentication using a *personal access token*.
+
+Remember, it's a secret key, that you never want to share with the world.
+
+::: {.callout-important}
+## More Important
+Never type you token in the console. This will be saved in the *.Rhistory* file.
+Also don't include it in an R script (that you may share, accidentally or otherwise).
+:::
+
+A good way to store your personal access token is to include it in the `.Renviron` file and then use it be calling `Sys.getenv('<ACCESS_TOKEN_NAME>')`.
+
+For more details, you can have a look at [this discussion](https://www.r-bloggers.com/2015/11/how-to-store-and-use-webservice-keys-and-authentication-details-with-r/) on storing personal tokens.
+
+## Use APIs in R (20min)
+
+### Requirements
+
+First, install and load the {httr2} package.
+
+```{r}
+#| eval: false
+# install.packages(c("httr2", "jsonlite", "usethis"))
+library(httr2)
+```
+
+### Find your target
+
+Our target will be [Zenodo](https://zenodo.org). Each API may have a different
+way of accessing the data, so you will have to read the documentation.
+
+There are a couple of things you can do with the [Zenodo API](https://developers.zenodo.org/#rest-api).
+
+- Records
+  + create
+  + modify
+  + delete
+  + search
+    - specific record
+    - query records
+- List
+  + user records
+
+### Authentication
+
+Some APIs require authentication to access the data. For Zenodo, we are required
+to create an API token. You can do this under Applications > Personal access tokens >
++New token
+
+Call it zenodo_api (or whatever you like).
+
+::: {.callout-important}
+Make sure you copy the access token. You will **not** be able to access it again
+once you navigate away from the page.
+:::
+
+When you have copied the token, you will need to store it on your computer so
+that you can access it from R.
+Your access token is personal, so it's important to make sure you don't accidentally
+publish it.
+
+Some useful ways to store the token are described in
+[this blog post](https://www.r-bloggers.com/2015/11/how-to-store-and-use-webservice-keys-and-authentication-details-with-r/).
+
+We will store it in *.Renviron*.In the console, type `usethis::edit_r_environ()`.
+In the window that pops up, enter `ZENODO_API=<your-access-token>`.
+
+Now restart R.
+
+We can retrieve (and store) the token using `Sys.getenv()`:
+
+```{r}
+token <- Sys.getenv("ZENODO_TOKEN")
+```
+
+
+### Creating an API request
+
+To construct an API call, we first need the base URL. You can find this in
+the API documentation for whatever site you are using. The base URL for Zenodo
+is `https://zenodo.org/api/`. The base URL remains the same for all calls to
+the Zenodo API, so we can save it as a variable.
+
+```{r}
+#| label: base-url
+zenodo_url <- "https://zenodo.org/api/"
+```
+
+#### Accessing a Zenodo record
+
+To access a specific record on Zenodo, we need the path to the resource we want
+to access.
+We will access a specific repository using the 'records' endpoint, `records/:id`,
+where `:id` is replaced with the record number.
+
+The record we will access is here: <https://zenodo.org/record/8376658>
+
+```{r}
+path <- "records/8376658"
+```
+
+Now we have the path, we need to add our authorisation, the request method,
+and a header with some additional information. We can do this by combining httr2
+functions into a pipe.
+This will be the request we send to the API endpoint.
+
+If we are retrieving something from the site, the method we use is 'GET'.
+If we are creating something, like a new record, we would use 'POST', and if
+we are making modifications, we use 'PATCH'. Since we are retrieving a record,
+we'll be using 'GET',
+
+```{r}
+#| label: api-dry-run
+req <- request(paste0(zenodo_url, path))
+resp <- req |>
+  req_auth_bearer_token(token) |> # authentication
+  req_method("GET") |> # request method
+  req_headers("Accept" = "application/json") |>
+  req_dry_run()
+```
+
+Our call has been constructed. We can use `req_dry_run()` to see what httr2 will
+send with the request. When we like what we see we can use `req_perform()` instead
+of `req_dry_run()`.
+
+```{r}
+#| label: api-request
+req <- request(paste0(zenodo_url, path))
+resp <- req |>
+  req_auth_bearer_token(token) |> # authentication
+  req_method("GET") |> # request method
+  req_headers("Accept" = "application/json") |>
+  req_perform()
+```
+
+```{r}
+#| label: api-status
+#| include: false
+if(resp$status_code == 200){
+  status <- emo::ji("check")
+} else {
+  status <- emo::ji("x")
+  warning(sprintf("Unexpected status code %s", resp$status_code))
+}
+```
+
+
+If successful, we want to see `status_code: 200`. Let's see...
+
+`resp$status_code`: `r paste(resp$status_code, status)`
+
+You can find all the error messages and their meanings in the
+[documentation](https://developers.zenodo.org/#http-status-codes).
+
+The interesting part of our `resp` is `body`. But right now it's unintelligible.
+We can extract the content using `resp_body_json` (because we used 'application/json').
+
+```{r}
+#| label: resp-content
+resp_content <- resp_body_json(resp)
+```
+
+Now we have stored information about the Zenodo record as a list in `resp_content`.
+For example, we can take a look at the metadata:
+
+```{r}
+#| label: resp-metadata
+resp_content$metadata
+```
+
+You may want to convert some elements of the response into a data frame instead of a list:
+
+```{r}
+json_response <- resp_body_string(resp)
+resp_df <- jsonlite::fromJSON(json_response, flatten = TRUE)
+resp_df
+```
+
+As long as we are only creating 'GET' calls, there's not much you can mess up.
+Once you start working with 'POST' and 'PATCH' calls, it can get hairy because
+you are actually uploading and modifying content, so make sure you make use of
+`req_dry_run()`.
+
+We can also download the file.
+
+```{r}
+file_url <- resp_content$files[[7]]$links$download
+file_name <- resp_content$files[[7]]$filename
+#file_url <- "https://zenodo.org/api/files/2f1c7e4c-71fb-4f71-9ab8-ca876274323c/DelftBicycleDataViewerAndData.zip"
+
+request(file_url) |>
+  #req_auth_bearer_token(token) |> # authentication
+  req_method("GET") |> # request method
+  req_perform(path = file_name)
+```
+
+
+#### API query
+
+We can also use the API to search for records. This is not longer possible from sandbox,
+so we need to modify the base URL. Then we can add a query
+to the API call. All parameters can be found in the
+[documentation](https://developers.zenodo.org/#list36).
+
+```{r}
+#| label: api-query
+zenodo_url <- "https://zenodo.org/api/"
+path <- "records/"
+
+req <- request(paste0(zenodo_url, path))
+resp <- req |>
+  req_auth_bearer_token(token) |> # authentication
+  req_method("GET") |> # request method
+  req_headers(
+    "Accept" = "application/json") |>
+  req_url_query(q = "Delft Bicycle") |> # our query
+  req_perform()
+```
+
+Translate the body of the response and we have the same as before.
+
+```{r}
+resp2_content <- resp |>
+  resp_body_json()
+resp2_content[[1]]
+
+```
+
+
+::: {.callout-note}
+
+## `zen4R` package
+
+Please note that we're using Zenodo as an example for demonstration purposes. 
+You can access the Zenodo.org records via 
+[`zen4R`](https://cran.r-project.org/web/packages/zen4R/index.html) package.
+:::
+
+## Closer look at API documentation (15min)
+
+So far, we've been pointing you to the specific points in the documentation. 
+But oftentimes, when you want to use an API to retrieve the data, 
+you will need to got through the documentation yourself. 
+
+### 4TU repository
+
+Let's have a look together at the documentation of the 
+[4TU.ResearchData repository](https://data.4tu.nl/), 
+to find our way around such a documentation. 
+
+First, you will need to log in to [`data.4tu.nl`](https://data.4tu.nl). 
+You can use your netID for this. Your landing page will be your `Dashboard`, 
+where you can upload a dataset or create a new collection. 
+You can also look at your `Sessions and API tokens`. 
+
+Below this table, there is information about the API documentation. 
+
+### Discrepancies from Figshare documentation 
+
+One thing to note here is that the 4TU repository went through a major change recently.
+Namely, so far it has been supported by a commercial platform called Figshare. 
+Right now, it is based on an open-source software developed in-house, called Djehuty. 
+To accommodate the needs of everybody that have been using 4TU.ResearchData API,
+Djehuty is compatible with version v2 of Figshare API, with a few important changes:
+
+- base URL is different than in the Figshare documentation
+- we need to generate a new personal access token
+- the new datasets will only have the `uuid` number, while `id` will be empty. 
+
+### Figshare API documentation 
+
+Let's now look into the [Figshare API documentation](https://docs.figshare.com/). 
+
+#### Base URL
+
+First, we see a Base URL 
+(the common base of the web address we will use to request resources)
+which in our case will be 
+
+```
+https://data.4tu.nl/v2
+```
+
+#### API description
+
+Let's now go to the API description. 
+
+##### Sending parameters 
+
+Here we find out that `GET` request parameters are included in the endpoint URL, 
+while `PUT` and `POST` methods accept parameters in the request body. 
+
+One important information is that the API only accepts `application/json` body. 
+
+##### Authentication 
+
+This section describes how the access token should be included in the request. 
+The preferred option is via HTTP header:
+
+```
+Authorization : token <ACCESS_TOKEN>
+```
+
+##### Searching filtering and pagination
+
+Here you can find some parameters that are applicable to server responses 
+that return lists. 
+You can see that by default the API will retrieve one page with 10 results. 
+If you expect more results, you can increase `page` and `page_size`. 
+
+You can `order` your list by a specific field. 
+
+You can search for a specific term using the `search_for` parameter.
+
+
+#### Articles
+
+When looking through the API documentation, 
+you need to get familiar with the vocabulary used in each repository.
+In Zenodo we worked with 'depositions' and 'records'. 
+
+In the Figshare documentation we deal with `Articles`. 
+There are also other entities like `Collections`, but we won't delve into that ). 
+When you look through the `Articles` section, 
+you can see division between `Public articles` and `Private articles`. 
+This is roughly the same as `Records` and `Depositions` in Zenodo, respectively. 
+
+In the  `Public article(s)` you will find information on how to build requests 
+regarding publicly available records. In the `Private article(s)`, 
+you will see details on how to modify data sets on your own account, that have
+not been published.  
+
+For example, when we go to the `Public articles search` we will see, that unlike 
+in the case of Zenodo, we need to use the `POST` method to perform the search. 
+We can also find the endpoint here which is `Base URL`+ `/articles/search`.
+
+As we found out earlier we need to:
+
+- use the each parameter `search_for` to look for specific terms
+- we need to include it in the body of the text. 
+
+So the request would be something like 
+
+```{r}
+#| eval: false
+req <- request(paste0(base_url, "/articles/search"))
+
+resp <- req |>
+  req_method("GET") |> 
+  req_body_json(list(search_for = "search term")) |>
+  req_perform()
+
+```
+
+
+## Your turn! (30min)
+
+Now it's time for you to practice: 
+
+::: {.callout-info}
+## Option 1: 4TU
+
+**Find  all resources related to 'cycling'**
+
+- Go to [`data.4tu.nl`](https://data.4tu.nl) to see the documentation
+- Log in and create an API access token
+- Safely store it in your environment
+- Search for a term key
+- Convert the json file to a `data.frame()`
+
+```{r}
+#| label: 4tu-exercise
+#| code-fold: true
+
+# base URL:
+api4tu_url <- "https://data.4tu.nl/v2"
+path <- "/articles/search"
+api4tu_token <- Sys.getenv("API_TOKEN_4TU")
+
+
+req <- request(paste0(api4tu_url, path))
+resp <- req |>
+  req_auth_bearer_token(api4tu_token) |> 
+  req_method("POST") |> 
+  req_body_json(list(search_for = "cycling", 
+                     order = "title", 
+                     order_direction = "asc",
+                     page = 1,
+                     page_size = 1000
+                     )) |>
+  req_perform()
+
+resp_content <- resp_body_json(resp, simplifyVector = TRUE) 
+
+json_response <- resp_body_string(resp)
+resp_df <- jsonlite::fromJSON(json_response, flatten = TRUE)
+
+
+  
+```
+
+**Additional exercise**
+
+- Select one article from the list and download files pertaining to the article
+
+
+```{r}
+#| label: 4tu-exercise-add
+#| code-fold: true
+
+#retrieve file ID 
+article_id <- resp_df$uuid[1]
+
+path <- paste0("/articles/", article_id)
+
+req <- request(paste0(api4tu_url, path))
+resp <- req |>
+  req_auth_bearer_token(api4tu_token) |> 
+  req_method("GET") |>
+  req_perform()
+
+resp_content <- resp_body_json(resp, simplifyVector = TRUE) 
+
+file_url <- resp_content$files$download_url[1]
+file_name <- resp_content$files$name[1]
+
+# Download file
+req <- request(file_url)
+resp <- req |>
+  req_auth_bearer_token(api4tu_token) |>
+  req_method("GET") |>
+  req_perform(path = file_name)
+
+
+```
+
+:::
+
+
+::: {.callout-info}
+## Option 2: Zenodo
+
+**Find  all resources related to 'beetroot'**
+
+- Go to [https://developers.zenodo.org/](https://developers.zenodo.org/) 
+to see documentation
+- Log in and create an API access token
+- Safely store it in your environment
+- Look for data about your favorite artist
+- Convert the json file to a `data.frame()`
+
+```{r}
+#| label: zenodo-exercise
+#| code-fold: true
+
+# base URL:
+zenodo_url <- "https://zenodo.org/api/"
+path <- "records"
+zenodo_token <- Sys.getenv("ZENODO_API")
+
+
+req <- request(paste0(zenodo_url, path))
+resp <- req |>
+  req_auth_bearer_token(zenodo_token) |> # authentication
+  req_method("GET") |> # request method
+  req_headers("Accept" = "application/json") |>
+  req_url_query(q = "beetroot", 
+                     size = "100", 
+                     sort = "bestmatch" 
+                     ) |>
+  req_perform()
+
+resp_content <- resp_body_json(resp, simplifyVector = TRUE) 
+
+
+json_response <- resp_body_string(resp)
+resp_df <- jsonlite::fromJSON(json_response, flatten = TRUE)
+
+
+```
+
+**Additional exercise**
+
+- Select one article from the list and download files pertaining to the article
+
+```{r}
+#| label: zenodo-exercise-add
+#| code-fold: true
+
+# Get the download link
+flattened_data <- resp_df %>%
+    tidyr::unnest(cols = c(files), names_sep = ".")
+
+file_link <- flattened_data$files.links.download[3] # resp_df$files[[1]]$links.download
+file_name <- flattened_data$files.filename[3]
+
+# Download - doesn't work!
+req <- request(file_link)
+resp_rec <- req |>
+  req_method("GET") |>
+  req_perform(path = file_name)
+
+
+```
+
+
+:::
+
+
+
+::: {.callout-info}
+## Option 3: The API of your choice
+
+**Use API you're interested in**
+
+:::
+
