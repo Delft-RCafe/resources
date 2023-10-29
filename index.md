@@ -128,6 +128,7 @@
 
 ## R for Reproducible Research
 
+* [Reproducibility course in R](https://reproducibility.rocks/materials/) by Elio Campitelli and Paola Corrales
 * [R Workflow](http://hbiostat.org/rflow/) by Frank E Harrell Jr
 * [PsyTeachR](https://psyteachr.github.io/) - curriculum that emphasizes essential ‘data science’ graduate skills that have been overlooked in traditional approaches to teaching, including programming skills, data visualisation, data wrangling and reproducible reports.
 * [R for Reproducible Research](https://annakrystalli.me/rrresearch/) - This course focuses on data and project management through R and Rstudio, will introduce students to best practice and equip them with modern tools and techniques for managing data and computational workflows to their full potential. 
