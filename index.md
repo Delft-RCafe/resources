@@ -202,3 +202,4 @@
 * [A Zotero Workflow for R](https://www.anthonyschmidt.co/post/2021-10-25-a-zotero-workflow-for-r/)
 * [Quantitative Methods in R](https://uoftcoders.github.io/rcourse/) for Biology
 * [Configuring Github and RStudio](https://happygitwithr.com/index.html)
+* [How to get good with R blogpost](https://www.njtierney.com/post/2023/11/10/how-to-get-good-with-r/)
