@@ -40,6 +40,21 @@
 * Add emojis using the [emo package](https://github.com/hadley/emo) (use ji_name or the [emojilib](https://unpkg.com/emojilib@3.0.4/dist/emoji-en-US.json) for an overview of available emojis)
 * [Deploying xaringan Slides with GitHub Pages](https://rviews.rstudio.com/2021/11/18/deploying-xaringan-slides-a-ten-step-github-pages-workflow/)
 
+## R Markdown and Reproducible Reports
+
+* Examples: [Scheel et al. 2020](https://github.com/amscheel/positive_result_rates), [novice analysis in R of rOpenSci twitter data ](https://github.com/stefaniebutland/twitter_time), [thesis in markdown](https://github.com/rosannav/thesis_in_rmarkdown), 
+* [A Reproducible Data Analysis Workflow With R Markdown, Git, Make, and Docker](https://doi.org/10.5964/qcmb.3763 ) (Peikert and Brandmaier 2021)
+* [WORCS](https://cjvanlissa.github.io/worcs/articles/setup.html)
+* [RMarkdown for writing reproducible scientific papers](https://libscie.github.io/rmarkdown-workshop/handout.html) by Frank & Hartgerink
+* Packages: [spelling](https://docs.ropensci.org/spelling/), renv, {write_bib} function from {knitr} for auto-citations, [groundhogr](https://groundhogr.com/) for reproducibility of packages, KablExtra for tables (Linesep: avoid breaks in the lines for no apparent reason), [Flextable](https://davidgohel.github.io/flextable/index), [Reproducer](https://www.rdocumentation.org/packages/reproducer/versions/0.1.6), [deposits](https://docs.ropensci.org/deposits)
+* [Getting started with Zotero, Better BibTeX, and RMarkdown](https://dewey.dunnington.ca/post/2020/getting-started-zotero-better-bibtex-rmarkdown/)
+* [Higher, further, faster with Marvelous R Markdown](https://docs.google.com/presentation/d/e/2PACX-1vRo1eXJtiwo6aTA8KZ2E-bUbv2GOonC2RIVk_5eWQ5y-ADXbRamBhHaa3w1vMW6BkEPOMJ13ZahSo8Q/embed?start=false&loop=true&delayms=30000#slide=id.p)
+* [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) and [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+* [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
+* [An Introduction to Writing Reproducible Manuscripts Using RMarkdown](https://uf-repro.github.io/rmarkdown-intro/slides.html#1)
+* Pandoc documentation provides more details on [automatic section IDs](http://pandoc.org/MANUAL.html#extension-auto_identifiers) and [implicit header references](http://pandoc.org/MANUAL.html#extension-implicit_header_references).
+* [Image sizes in an R markdown Document](https://www.jumpingrivers.com/blog/knitr-rmarkdown-image-size/)
+
 ## Building Websites in R
 
 * [Blogdown](https://github.com/rstudio/blogdown) - Provides a powerful and customizable website output format for R Markdown
@@ -49,7 +64,7 @@
 
 ## Dependency management
 
-* [PackRat](https://rstudio.github.io/packrat/) - a dependency management system for R
+* [Paples: https://github.com/stefaniebutland/twitter_timeckRat](https://rstudio.github.io/packrat/) - a dependency management system for R
 * [renv](https://rstudio.github.io/renv/articles/renv.html) - a new effort to bring project-local R dependency management to your projects. The goal is for renv to be a robust, stable replacement for the Packrat package, with fewer surprises and better default behaviors.
   * [Renv package explained](https://kevinushey-2020-rstudio-conf.netlify.app/slides.html) by Kevin Ushey   
 * [Requirements.txt-like file for R (Stack Overflow)](https://stackoverflow.com/questions/38928326/is-there-something-like-requirements-txt-for-r) - various suggestions for creating a dependency file for your R project.
