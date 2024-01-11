@@ -1,0 +1,321 @@
+---
+title: Creating an R Package
+author: "R Café @ TU Delft"
+execute: 
+  eval: false
+  echo: true
+format:
+  rcafe-revealjs:
+    center: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| eval: true
+
+library(testthat)
+```
+
+## Icebreaker
+
+. . .
+
+Have you used an R package?
+
+. . .
+
+Have you created an R package?
+
+. . .
+
+Have you submitted an R package to CRAN?
+
+. . .
+
+What is your favourite R package?
+
+
+
+## Why?
+
+There are benefits (beyond sharing) to bundling your code as an R package:
+
+- sharing with others is convenient
+- it's a common template that R users will recognise
+- there are many useful tools and resources for developing R packages
+- it will help you understand the structure of an R package
+
+You can also [bundle your research project as an R package](https://delft-rcafe.github.io/home/#organizing-a-research-paper-as-an-r-package)!
+
+
+## R Cafe package
+
+We need your help!
+
+Your mission, should you choose to accept, is to help create a communidefaultnaming-things/):
+
+- Is the package name hard to say?
+- Is the package name hard to spell?
+- Can you remember the name of the package?
+- Does the package name evoke the task it does, or perhaps fit into some sort of larger pun or story?
+
+## R package: naming
+
+Ideas:
+
+- cafehelper
+- delftrcafe
+- tudrcafe
+- [something random](https://randomnamegenerators.com/software-name-generator/)
+
+Check if the name is already in use
+
+```{r}
+available::available("name")
+```
+
+## R package: in practice
+
+Most of the process can be achieved with the {devtools} and {usethis} packages
+
+```{r}
+install.packages(c("devtools", "usethis"))
+```
+
+<br><br>
+
+::: {.callout-important}
+<i class='nf nf-fa-windows'></i> Windows users will have to install [Rtools](https://cran.r-project.org/bin/windows/Rtools/)
+:::
+
+
+## R package: in practice
+
+```{r}
+library(usethis)
+create_package("<path/to/packagename>")
+```
+
+This creates the following files:
+
+```
+<packagename>
+├── .Rbuildignore
+├── .gitignore
+├── DESCRIPTION
+├── NAMESPACE # DO NOT EDIT
+├── R
+└── <packagename>.Rproj
+```
+
+
+## R package: functions {.smaller}
+
+Main part of the R package
+
+Tasks:
+
+- enter new event into a scheduler
+- create a calendar event (.ics)
+- send emails for communication
+
+Useful for participants:
+
+- retrieve info on upcoming sessions
+  + date, time, room, topic, speaker, registration link
+- retrieve resources from previous sessions
+
+
+## R package: functions
+
+(Code-along) Extract information on upcoming session
+
+
+## R package: load functions
+
+Whenever you create or modify a function, it needs to be (re-)loaded
+
+This can be done with the `load_all()` function from {devtools}
+
+```{r}
+devtools::load_all()
+```
+
+
+## Add dependencies to DESCRIPTION
+
+```{r}
+usethis::use_package("packagename")
+```
+
+This will make sure *packagename* is installed on a user's system when your package is installed.
+
+
+## R package: making functions accessible
+
+If you install the package now, the functions will be missing
+
+They need to be **exported**
+
+. . .
+
+this can be done by adding
+
+```{r}
+#| code-line-numbers: "1"
+ 
+#' @export
+function_name <- function(){
+  # function body
+}
+```
+
+. . .
+
+Then run 
+
+```{r}
+devtools::document()
+```
+
+to modify *NAMESPACE* (don't modify manually!)
+
+## R package: testing
+
+A good way to catch issues is the {testthat} package
+
+which you can apply to your package with... you guessed it, {usethis}
+
+```{r}
+usethis::use_testthat()
+```
+
+which creates
+
+```
+tests
+├── testthat
+|    └── test-<testname>.R
+└── testthat.R # DO NOT EDIT
+```
+
+## R package: testing
+
+Add a function testing script, e.g. *test-function.R*, to testthat
+
+```{r}
+#| eval: true
+test_that("multiplication works", {
+  expect_equal(2 * 2, 4)
+  expect_false(2 * 2 == 6)
+})
+```
+
+This is just a generic example; ideally you should include statements about functions in the package
+
+Run tests when you modify functions
+
+```{r}
+devtools::test()
+```
+
+Testing is also part of `check()`
+
+## R package: checking
+
+Check that your package meets criteria for a functional R package
+
+```{r}
+devtools::check()
+```
+
+This function will tell you about issues with your package
+
+- **errors:** Your package won't work
+- **warnings:** your package will work but breaks some important conventions
+- **notes:** your package will work but could benefit from minor modifications
+
+## R package: workflow
+
+Here is a typical workflow when working on package development:
+
+- Edit one or more files below R/.default
+- `document()` (if you’ve made any changes that impact help files or NAMESPACE)
+- `load_all()`
+- Run some examples interactively.
+- `test()` (or `test_active_file()`)
+- `check()`
+
+
+# Your turn! {background-color="#00A6D6"}
+
+
+
+## R package: contributors
+
+Add yourself as a contributor to the DESCRIPTION under `Authors@R`
+
+```
+Authors@R: c(
+    person("Example", "Person1", email = "ex1@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-2345-6789")),
+    person("Example", "Person2", role = "aut",
+           comment = c(ORCID = "0000-0002-2345-6789"))
+  )
+```
+
+abbreviations:
+
+- aut = author
+- cre = creator (maintainer)
+- ctb = contributor
+
+::: {.callout-note}
+The DESCRIPTION file format is that of a version of a ‘Debian Control File’ (https://www.debian.org/doc/debian-policy/ch-controlfields.html)
+:::
+
+## R package: build and distribute
+
+:::: {.columns}
+::: {.column width="30%"}
+
+Package states: 
+
+- source
+- bundled
+- binary
+- installed
+- in-memory
+
+:::
+::: {.column width="70%"}
+
+![[*R Packages (2e)*](https://r-pkgs.org/)](https://r-pkgs.org/diagrams/install-load.png)
+
+:::
+::::
+
+## R package: build and distribute
+
+Package locations
+
+**Official:** CRAN `install.packages("packagename")`
+
+**Development:** GitHub (mostly) `devtools::install_github("username/packagename")`
+
+## Resources
+
+[Official CRAN documentation](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Creating-R-packages)
+
+[R Packages book](https://r-pkgs.org/)
+
+[usethis package documentation](https://usethis.r-lib.org/)
+
+[testthat package documentation](https://testthat.r-lib.org/)
+
+## Delft R Café {.center}
+
+<i class="nf nf-cod-home"></i> [delft-rcafe.github.io/home/](https://delft-rcafe.github.io/home/)  
+<i class="nf nf-md-email"></i> [rcafe-lib@tudelft.nl](mailto:rcafe-lib@tudelft.nl)  
+<i class="nf nf-md-github"></i> [delft-rcafe](https://github.com/delft-rcafe)

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//hacksw/handcal//NONSGML v1.0//EN
+BEGIN:VEVENT
+UID:
+DTSTAMP:20231210T172345Z
+DTSTART;TZID=Europe/Amsterdam:20240111T120000
+DTEND;TZID=Europe/Amsterdam:20240111T133000
+LOCATION: TUDelft Library\, Orange Room
+SUMMARY: R Café January
+DESCRIPTION: R Cafe January. Theme\: Creating an R package.
+END:VEVENT
+END:VCALENDAR
+
+
+see more (https://datatracker.ietf.org/doc/html/rfc5545)
