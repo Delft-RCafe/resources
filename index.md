@@ -62,12 +62,13 @@
 * [Binder](https://mybinder.org/) - Have a repository full of Jupyter notebooks? With Binder, open those notebooks in an executable environment, making your code immediately reproducible by anyone, anywhere.
 * [Netlify](https://www.netlify.com/) - Build, deploy & scale modern web projects
 
-## Dependency management
+## Dependency management & Docker
 
 * [Paples: https://github.com/stefaniebutland/twitter_timeckRat](https://rstudio.github.io/packrat/) - a dependency management system for R
 * [renv](https://rstudio.github.io/renv/articles/renv.html) - a new effort to bring project-local R dependency management to your projects. The goal is for renv to be a robust, stable replacement for the Packrat package, with fewer surprises and better default behaviors.
   * [Renv package explained](https://kevinushey-2020-rstudio-conf.netlify.app/slides.html) by Kevin Ushey   
 * [Requirements.txt-like file for R (Stack Overflow)](https://stackoverflow.com/questions/38928326/is-there-something-like-requirements-txt-for-r) - various suggestions for creating a dependency file for your R project.
+* [A Tutorial for Setting R Development Environment with VScode, Dev Containers, and Docker ](https://github.com/RamiKrispin/vscode-r)
 
 ## Data Visualisation
 
@@ -118,6 +119,7 @@
 * [Data cleaning with janitor](https://sfirke.github.io/janitor/)
 * [Dive into dplyr](https://www.kaggle.com/jessemostipak/dive-into-dplyr-tutorial-1)
 * [dplyr tutorial](https://allisonhorst.shinyapps.io/dplyr-learnr/) by Allison Horst (beginner)
+* [Joining datasets](https://cghlewis.com/blog/joins/) by Crystal Lewis
 
 ## Integrations with other Software
 
