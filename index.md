@@ -66,7 +66,8 @@
 
 * [Paples: https://github.com/stefaniebutland/twitter_timeckRat](https://rstudio.github.io/packrat/) - a dependency management system for R
 * [renv](https://rstudio.github.io/renv/articles/renv.html) - a new effort to bring project-local R dependency management to your projects. The goal is for renv to be a robust, stable replacement for the Packrat package, with fewer surprises and better default behaviors.
-  * [Renv package explained](https://kevinushey-2020-rstudio-conf.netlify.app/slides.html) by Kevin Ushey   
+  * [Renv package explained](https://kevinushey-2020-rstudio-conf.netlify.app/slides.html) by Kevin Ushey
+  * [Things that can go wrong when using renv](https://epiverse-trace.github.io/posts/renv-complications/) by Hugo Gruson  
 * [Requirements.txt-like file for R (Stack Overflow)](https://stackoverflow.com/questions/38928326/is-there-something-like-requirements-txt-for-r) - various suggestions for creating a dependency file for your R project.
 * [A Tutorial for Setting R Development Environment with VScode, Dev Containers, and Docker ](https://github.com/RamiKrispin/vscode-r)
 
