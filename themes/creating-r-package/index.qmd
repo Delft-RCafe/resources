@@ -7,6 +7,7 @@ execute:
 format:
   rcafe-revealjs:
     center: true
+    navigation-mode: vertical
 ---
 
 ```{r}
@@ -17,25 +18,22 @@ format:
 library(testthat)
 ```
 
-## Icebreaker
+# Icebreaker
 
 . . .
 
-Have you used an R package?
+Who attended Part 1?
 
 . . .
 
-Have you created an R package?
-
-. . .
-
-Have you submitted an R package to CRAN?
+Who has started creating their own package?
 
 . . .
 
 What is your favourite R package?
 
 
+# Part 1
 
 ## Why?
 
@@ -181,74 +179,7 @@ devtools::document()
 
 to modify *NAMESPACE* (don't modify manually!)
 
-## R package: testing
-
-A good way to catch issues is the {testthat} package
-
-which you can apply to your package with... you guessed it, {usethis}
-
-```{r}
-usethis::use_testthat()
-```
-
-which creates
-
-```
-tests
-├── testthat
-|    └── test-<testname>.R
-└── testthat.R # DO NOT EDIT
-```
-
-## R package: testing
-
-Add a function testing script, e.g. *test-function.R*, to testthat
-
-```{r}
-#| eval: true
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
-  expect_false(2 * 2 == 6)
-})
-```
-
-This is just a generic example; ideally you should include statements about functions in the package
-
-Run tests when you modify functions
-
-```{r}
-devtools::test()
-```
-
-Testing is also part of `check()`
-
-## R package: checking
-
-Check that your package meets criteria for a functional R package
-
-```{r}
-devtools::check()
-```
-
-This function will tell you about issues with your package
-
-- **errors:** Your package won't work
-- **warnings:** your package will work but breaks some important conventions
-- **notes:** your package will work but could benefit from minor modifications
-
-## R package: workflow
-
-Here is a typical workflow when working on package development:
-
-- Edit one or more files below R/.default
-- `document()` (if you’ve made any changes that impact help files or NAMESPACE)
-- `load_all()`
-- Run some examples interactively.
-- `test()` (or `test_active_file()`)
-- `check()`
-
-
-# Your turn! {background-color="#00A6D6"}
+## Your turn! {background-color="#00A6D6"}
 
 
 
@@ -304,7 +235,129 @@ Package locations
 
 **Development:** GitHub (mostly) `devtools::install_github("username/packagename")`
 
-## Resources
+
+# Part 2
+
+## R Package: summary
+
+Naming
+
+- Is the package name hard to say?
+- Is the package name hard to spell?
+- Can you remember the name of the package?
+- Does the package name evoke the task it does, or perhaps fit into some sort of larger pun or story?
+
+## R Package: summary
+
+Functions
+
+- core part of the package
+- (re-)load when modified `devtools::load_all()`
+- need to be exported `#' @export`
+
+Documentation
+
+- create documentation for functions and data
+- incorporate documentation `devtools::document()`
+
+## R Package: summary
+
+We created a package!
+
+Download the binary from the R console:
+```{r}
+# To download the binary
+devtools::install_github("delft-rcafe/tudrcafe")
+```
+
+Or clone the git repo to get the source:
+
+```sh
+# To download the source
+git clone git@github.com:Delft-RCafe/tudrcafe.git
+```
+
+## R package: testing
+
+A good way to catch issues is the {testthat} package
+
+which you can apply to your package with... you guessed it, {usethis}
+
+```{r}
+usethis::use_testthat()
+```
+
+it creates
+
+```
+tests
+├── testthat
+└── testthat.R # DO NOT EDIT
+```
+
+## R package: testing
+
+Add a testing script
+
+```{r}
+usethis::use_test("functions") # name of test file
+```
+
+Then add a test to run:
+
+```{r}
+#| eval: true
+test_that("multiplication works", {
+  expect_equal(2 * 2, 4)
+  expect_false(2 * 2 == 6)
+})
+```
+
+This is just a generic example; ideally you should include statements about functions in the package
+
+Run tests when you modify functions
+
+```{r}
+devtools::test()
+```
+
+Testing is also part of `check()`
+
+## R package: checking
+
+Check that your package meets criteria for a functional R package
+
+```{r}
+devtools::check()
+```
+
+This function will tell you about issues with your package
+
+- **errors:** Your package won't work
+- **warnings:** your package will work but breaks some important conventions
+- **notes:** your package will work but could benefit from minor modifications
+
+## R package: workflow
+
+Here is a typical workflow when working on package development:
+
+- Edit one or more files below R/.default
+- `document()` (if you’ve made any changes that impact help files or NAMESPACE)
+- `load_all()`
+- Run some examples interactively.
+- `test()` (or `test_active_file()`)
+- `check()`
+
+
+## To do for tudrcafe
+
+- More testing
+- More functionality
+  + R Cafe schedule (spreadsheet)
+- README
+- Contributing guidelines
+
+# Resources
 
 [Official CRAN documentation](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Creating-R-packages)
 
@@ -314,7 +367,11 @@ Package locations
 
 [testthat package documentation](https://testthat.r-lib.org/)
 
-## Delft R Café {.center}
+# Upcoming sessions
+
+22nd March - Topic: TBD  
+26th April - Topic: APIs (featuring Sofia Gil Clavel)  
+24th May - Topic: TBD
 
 <i class="nf nf-cod-home"></i> [delft-rcafe.github.io/home/](https://delft-rcafe.github.io/home/)  
 <i class="nf nf-md-email"></i> [rcafe-lib@tudelft.nl](mailto:rcafe-lib@tudelft.nl)  
