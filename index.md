@@ -80,6 +80,7 @@
 * [Tidy Data Tutor](https://tidydatatutor.com/) helps you visualize data analysis pipelines
 * [Common R Mistakes in Data Viz](https://nickch-k.github.io/DataCommSlides/Lecture_04_Common_R_Problems.html) by Nick HK
 * [Data Visualization](https://datavizm20.classes.andrewheiss.com/content/) by Andrew Heiss
+* [BrailleR](https://cran.r-project.org/web/packages/BrailleR/index.html): a package to make data visualisations more accessible for blind people
 
 ### Ggplot2
 
