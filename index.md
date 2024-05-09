@@ -122,6 +122,7 @@
 * [Dive into dplyr](https://www.kaggle.com/jessemostipak/dive-into-dplyr-tutorial-1)
 * [dplyr tutorial](https://allisonhorst.shinyapps.io/dplyr-learnr/) by Allison Horst (beginner)
 * [Joining datasets](https://cghlewis.com/blog/joins/) by Crystal Lewis
+* [Data Cleaning for data sharing](https://cghlewis.github.io/ncme-data-cleaning-workshop/slides.html) by Crystal Lewis
 
 ## Integrations with other Software
 
