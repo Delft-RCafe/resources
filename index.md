@@ -71,6 +71,9 @@
 * [Requirements.txt-like file for R (Stack Overflow)](https://stackoverflow.com/questions/38928326/is-there-something-like-requirements-txt-for-r) - various suggestions for creating a dependency file for your R project.
 * [A Tutorial for Setting R Development Environment with VScode, Dev Containers, and Docker ](https://github.com/RamiKrispin/vscode-r)
 
+## Citation
+* "[How to Cite R and R Packages](https://ropensci.org/blog/2021/11/16/how-to-cite-r-and-r-packages/)" by Steffi Lazerte 
+
 ## Data Visualisation
 
 * [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) by Claus O. Wilke
