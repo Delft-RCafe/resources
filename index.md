@@ -188,6 +188,7 @@
 * [Introduction to R](https://www.youtube.com/watch?v=Rs8QwC1NaCY) by Dr Joscelin Rocha-Hidalgo 
 * [The GRAPH Courses](https://www.youtube.com/watch?v=2aHGC8vCcOE&list=PLkkleDPMR2sU2Y6H4fDBi9msOarZWOcBB)
 * [Georgia State University workshop recordings](https://research.library.gsu.edu/dataservices/data-analysis-tools#r-workshops)
+* [From Spreadsheets to R]([url](https://yabellini.netlify.app/courses/fromspreadsheettor/))
 
 ## R & Statistics
 
