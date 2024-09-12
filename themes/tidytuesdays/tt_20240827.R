@@ -170,11 +170,13 @@ p <- power_rangers_seasons |>
   ggplot(aes(color = producer)) +
   geom_point(aes(x = full_title, y = air_date_first_ep , size = number_of_episodes)) + 
   coord_flip()+
-  geom_point(aes(x = full_title, y = air_date_last_ep_date,, size = number_of_episodes))+
+  geom_point(aes(x = full_title, y = air_date_last_ep_date, size = number_of_episodes))+
   geom_segment(aes(y = air_date_first_ep,
                    x = full_title ,
                    yend = air_date_last_ep_date,
                    xend = full_title))
+
+  theme_set(theme_minimal())
 
 # Season timeline -  adapt colours ---------------------------------------------------------
 p <- p + 
@@ -195,6 +197,8 @@ p
 p <- p + 
   theme(legend.position = 'top') 
 p
+
+ggsave("tidytuesday-plot.png", p)
 
 # Violin - IMDB rating per episode ----------------------------------------
 p2 <- pr_df |>
@@ -333,3 +337,41 @@ set.seed(12345)
 
 
 
+
+
+# Live coding R Cafe 12 September 2024        
+summary(power_rangers_seasons)
+
+pr_df<-
+  power_rangers_episodes |>
+  inner_join(power_rangers_seasons|>
+               rename(s_IMDB_rating = IMDB_rating),
+             by ="season_title")
+pr_df |>
+  ggplot() +
+  geom_boxplot(aes(x = air_date,
+                   y = IMDB_rating,
+                   color = producer)
+               )+
+  geom_jitter(aes(x = air_date, 
+                  y = IMDB_rating, 
+                  color = producer))+
+  geom_point(data = power_rangers_seasons,
+             aes(x = air_date_first_ep,
+                 y = IMDB_rating),
+             color = "black",
+            size = 5) #+
+  #geom_text(data = power_rangers_seasons , 
+  #              aes(x = ))
+    
+    # +
+    #   geom_point(data = power_rangers_seasons, 
+    #              aes(x = air_date_last_ep_date, y = IMDB_rating ), 
+    #              color = "black" )+
+    #   geom_segment(data = power_rangers_seasons, 
+    #                aes(x =air_date_first_ep ,
+    #                    xend = air_date_last_ep_date,
+    #                    y = IMDB_rating,
+    #                    yend = IMDB_rating))
+    
+    
