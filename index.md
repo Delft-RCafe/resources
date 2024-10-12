@@ -168,7 +168,8 @@
 * [Tidy data](http://dx.doi.org/10.18637/jss.v059.i10), paper by Hadley Wickham explaining a central concept of the tidyverse
 * [Filling your bag of workflow tricks](https://mpaulacaldas.github.io/r-ladies-workflow/#1) by María Paula Cadras
 * [Automating Computational Reproducibility in R using renv, Docker, and GitHub Actions](http://haines-lab.com/post/2022-01-23-automating-computational-reproducibility-with-r-using-renv-docker-and-github-actions/) by Nathaniel Haines
-* [Building reproducible analytical pipelines with R](https://raps-with-r.dev/) by Bruno Rodrigues 
+* [Building reproducible analytical pipelines with R](https://raps-with-r.dev/) by Bruno Rodrigues
+* [Reproducible Research Workflow with GitHub and R](https://github.com/paezha/Reproducible-Research-Workflow) by Antonio Paez
 
 
 ## R beginner materials
